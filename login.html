@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="reader login, Annuscha Botes account, Google sign in, Facebook sign in, create reader account, My Chronicle, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
+  <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
+  <title>Sign In | Annuscha Botes</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="login-page">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="books.html">Books</a><a href="author.html">Author</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a><a href="gallery.html">Gallery</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav><div class="header-actions"></div></header>
+<main id="main-content" class="main">
+  <section class="section wrap auth-section">
+    <p class="eyebrow">Sign in / Join the Chronicle</p>
+    <h2>Speak the oath.</h2>
+    <div class="columns-2 auth-grid">
+      <article class="panel panel-pad auth-panel">
+        <p class="eyebrow">Reader Gate</p>
+        <h3>Sign In</h3>
+        <div class="social-auth-stack">
+          <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="onSignIn"></div>
+          <button class="btn ghost provider-auth-btn google-auth-btn" type="button" data-provider-preview aria-label="Sign in with Google"><span class="google-auth-mark" aria-hidden="true">G</span> Sign in with Google</button>
+          <div class="auth-divider">or</div>
+          <button class="btn ghost provider-auth-btn facebook-auth-btn" type="button" data-provider-preview aria-label="Sign in with Facebook"><span class="fe--facebook" aria-hidden="true"></span> Sign in with Facebook</button>
+        </div>
+        
+        <div class="divider"></div>
+        <form data-reader-login>
+          <label>Name or email<input type="text" autocomplete="username"></label>
+          <label>Password<input type="password" autocomplete="current-password"></label>
+          <label class="form-check"><input type="checkbox"> Remember me</label>
+          <a class="tiny-link" href="mailto:hello@annuschabotes.com?subject=Password%20reset%20request">Forgot password?</a>
+          <p class="tag">Password resets require secure backend authentication before launch.</p>
+          <button class="btn primary" type="submit">Sign In</button>
+        </form>
+      </article>
+      <article id="join" class="panel panel-pad auth-panel reader-library-panel">
+        <p class="eyebrow">Reader Library</p>
+        <h3>Create your reader account</h3>
+          <form class="account-create-form">
+          <label>Name<input autocomplete="name" required></label>
+          <label>Email<input type="email" autocomplete="email" required></label>
+          <label>Password<input type="password" autocomplete="new-password" required></label>
+          <label>Confirm password<input type="password" autocomplete="new-password" required></label>
+          <label>Optional contact number<input type="tel" autocomplete="tel"></label>
+          <label class="form-check"><input type="checkbox"> Remember me</label>
+          <label class="form-check"><input type="checkbox" data-accept-terms> I accept the Terms of Use & Sale</label>
+          <button class="btn primary" type="button" data-create-account disabled>Create New Account</button>
+        </form>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Sign in for reader features when they are ready.</p></div><div><p class="footer-title">Reader</p><a href="faq.html">FAQ</a></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="lore.html">Lore</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a></div></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

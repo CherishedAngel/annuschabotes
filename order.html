@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Order books by Annuscha Botes through secure external checkout.">
+  <meta name="keywords" content="order Annuscha Botes books, PayPal checkout, Payhip checkout, PDF order, audio order, fantasy romance purchase, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
+  <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
+  <title>Order Copy | Annuscha Botes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="order-page">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="books.html">Books</a>
+    <a href="author.html">Author</a>
+    <a href="characters.html">Characters</a>
+    <a href="lore.html">Lore</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="header-actions"><a class="tiny-link" href="login.html">Sign in</a></div>
+</header>
+<main id="main-content" class="main">
+  <section class="section wrap contact-grid">
+    <div>
+      <p class="eyebrow">Secure external checkout</p>
+      <h2>Claim Your Tome</h2>
+      <p class="lead">Choose your preferred format and begin your journey beyond the veil.
+
+All payments are securely processed through trusted external providers such as Payhip. This website never collects or stores card numbers, CVV codes, or banking information.
+
+Once your purchase is complete, your digital copy will be delivered safely through the selected provider.</p>
+      <form class="order-form" data-order-form action="https://formspree.io/f/mjvqqgwb" method="POST">
+        <div class="columns-2">
+          <label>Name and surname
+            <input name="name" autocomplete="name" placeholder="Elysia Nightshade" required>
+          </label>
+          <label>Email address
+            <input name="email" type="email" autocomplete="email" placeholder="example@gmail.com" required>
+          </label>
+        </div>
+        <label>Contact number
+          <input name="phone" type="tel" autocomplete="tel" placeholder="+27 12 345 6789">
+        </label>
+        <label>Book choice
+          <select name="book">
+            <option>Eclipse of Elysium</option>
+            <option>Planet of Xyphara</option>
+            <option>What Remains of Me</option>
+          </select>
+        </label>
+
+        <div class="order-option-stack">
+          <fieldset>
+            <legend>Product</legend>
+            <div class="order-option-grid">
+              <label class="form-check"><input type="checkbox" name="product" value="pdf"> PDF</label>
+              <label class="form-check disabled-option"><input type="checkbox" name="product" value="audio" disabled> Audio</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Contact preference</legend>
+            <div class="order-option-grid">
+              <label class="form-radio"><input type="radio" name="contact" value="email" checked> Email</label>
+              <label class="form-radio"><input type="radio" name="contact" value="phone"> Phone</label>
+              <label class="form-radio"><input type="radio" name="contact" value="whatsapp"> WhatsApp</label>
+              <label class="form-radio"><input type="radio" name="contact" value="none"> None</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <label class="form-check newsletter-check"><input type="checkbox" name="newsletter"> Send me monthly updates, new releases, and website changes.</label>
+        <button class="btn primary" type="submit">Order Copy</button>
+      </form>
+      <article class="panel panel-pad order-status" data-order-status tabindex="-1" aria-live="polite">
+        <p class="eyebrow">Order noted</p>
+        <h3>Continue to Payhip</h3>
+        <p>Please complete payment through the secure Payhip checkout button. Delivery of paid PDFs/audio should be handled by Payhip fulfillment, manual email delivery, or a secure backend after payment confirmation.</p>
+        <div class="button-row" style="margin-top:18px">
+          <a class="btn primary payhip-buy-button" data-payment-link data-product="ZxdEY" href="#">Complete Payhip Checkout</a>
+          <a class="btn ghost" href="contact.html">Ask a Question</a>
+        </div>
+        <div class="button-row" data-product-payment-links style="margin-top:16px"></div>
+      </article>
+    </div>
+    <aside class="panel panel-pad notice">
+      <p class="eyebrow">Digital Delivery</p>
+      <ul>
+        <li>Instant digital access after purchase</li>
+        <li>Multiple reading formats available</li>
+        <li>Secure external checkout</li>
+        <li>Read on mobile, tablet, or desktop</li>
+      </ul>
+    </aside>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Choose your story carefully.
+
+Some worlds refuse to let go.</p></div>
+    <div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a></div>
+    <div><p class="footer-title">Reader</p><a href="login.html">My Chronicle</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+    <div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a><a href="content-disclaimer.html">Content Disclaimer</a></div>
+  </div>
+</footer>
+<script type="text/javascript" src="https://payhip.com/embed_page.js?v=24u6985"></script>
+<script src="script.js"></script>
+</body>
+</html>
