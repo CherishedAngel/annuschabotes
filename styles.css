@@ -131,76 +131,76 @@ body::after {
 }
 /* Home page */
 body.home-page {
-  --page-image: url("assets/Background/cave.jpg");
+  --page-image: url("assets/Background/cave.webp");
   --page-position: center top;
 }
 
 /* privacy page */
 body.privacy-page {
-  --page-image: url("assets/Background/black_and_white_eclipse_background.jpg");
+  --page-image: url("assets/Background/privacy background.webp");
   --page-position: center top;
 }
 /* Faq page */
 body.faq-page {
-  --page-image: url("assets/Elysium pics/creatures/faq background.jpg");
+  --page-image: url("assets/Elysium pics/creatures/faq background.webp");
   --page-position: center -180px;
   background-size: 120%;
 }
 
 /* book-remains page */
 body.book-remains-page {
-  --page-image: url("assets/What remains of me pics/Characters/Angel/Angel feels her Echo.jpg");
+  --page-image: url("assets/What remains of me pics/Characters/Angel/Angel feels her Echo.webp");
   --page-position: center top;
 }
 
 /* user page */
 body.user-page {
---page-image: url("assets/Background/user background.jpg");
+--page-image: url("assets/Background/user background.webp");
 --page-position: center top;
 }
 /* gallery page */
 body.gallery-page {
---page-image: url("assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.jpg");
+--page-image: url("assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.webp");
 --page-position: right;
 }
 
 /* lore page */
 body.lore-page {
---page-image: url("assets/Background/lore back.jpg");
+--page-image: url("assets/Background/lore back.webp");
 --page-position: center top;
 }
 /* login page */
 body.login-page {
---page-image: url("assets/Background/portal.jpg");
+--page-image: url("assets/Background/portal.webp");
 --page-position: center 30%;
 }
 
 
 /* terms page */
 body.terms-page {
-  --page-image: url("assets/Background/black_and_white_eclipse_background.jpg");
+  --page-image: url("assets/Background/purshase back.webp");
   --page-position: center top;
 }
 
 
 /* cart page */
 body.cart-page {
-  --page-image: url("assets/Background/cart background.jpg");
+  --page-image: url("assets/Background/cart background.webp");
   --page-position: center top;
 }
 /* author page */
 body.author-page {
-  --page-image: url("assets/Background/Author background.jpg");
+  --page-image: url("assets/Background/author back.webp");
   --page-position: center top;
 }
 /* order page */
 body.order-page {
-  --page-image: url("assets/Background/color background.jpg");
+  --page-image: url("assets/Background/color background.webp");
   --page-position: center top;
 }
 /* contact page */
 body.contact-page {
-  --page-image: url("assets/Elysium pics/creatures/eagles in the mountains.jpg");
+  --page-image: url("assets/Elysium pics/creatures/eagles in the mountains.webp");
   --page-position: center;
 }
 
@@ -3300,7 +3300,7 @@ textarea::placeholder {
 }
 
 body.user-page {
---page-image: url("assets/Background/user background.jpg");
+--page-image: url("assets/Background/user background.webp");
 }
 
 .reader-hero {
@@ -3506,7 +3506,7 @@ body.user-page {
   border-radius: 16px 44px 16px 26px;
   background:
     linear-gradient(rgba(5, 7, 12, .72), rgba(5, 7, 12, .84)),
-    url("assets/Background/purshase back.jpg") center / cover,
+    url("assets/Background/purshase back.webp") center / cover,
     rgba(5, 7, 12, .72);
 }
 
@@ -3615,7 +3615,7 @@ body.user-page {
   inset: 0;
   background-image:
     linear-gradient(rgba(5, 7, 12, .74), rgba(5, 7, 12, .82)),
-    url("assets/Background/portal.jpg");
+    url("assets/Background/portal.webp");
   background-size: cover;
   background-position: center;
   opacity: .72;
