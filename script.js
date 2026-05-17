@@ -491,7 +491,7 @@ function enhanceNavMenus() {
     if (brand.querySelector(".brand-logo")) return;
     const logo = document.createElement("img");
     logo.className = "brand-logo";
-    logo.src = "assets/ideas/icon brand.png";
+    logo.src = "assets/ideas/icon brand.webp";
     logo.alt = "";
     logo.setAttribute("aria-hidden", "true");
     brand.prepend(logo);
@@ -810,92 +810,86 @@ const galleryWorlds = {
       {
         "title": "Scenery of Elysium",
         "type": "Scenery",
-        "image": "assets/Elysium pics/scenery/waterfall in Elysium.jpg",
+        "image": "assets/Elysium pics/scenery/waterfall in Elysium.webp",
         "text": "Luminous lands, ancient waterfalls, forests, lakes, caves, ships, mountains, and places where light is never as pure as it seems.",
         "images": [
-          "assets/Elysium pics/scenery/2 forest in Elysium.jpg",
-          "assets/Elysium pics/scenery/a building in Elysium.jpg",
+          "assets/Elysium pics/scenery/2 forest in Elysium.webp",
+          "assets/Elysium pics/scenery/a building in Elysium.webp",
           "assets/Elysium pics/scenery/a lake in Elysium.webp",
-          "assets/Elysium pics/scenery/abandoned house in Elysium.jpg",
-          "assets/Elysium pics/scenery/cave in Elysium landscape.jpg",
-          "assets/Elysium pics/scenery/cave in Elysium.jpg",
-          "assets/Elysium pics/scenery/ChatGPT Image May 10, 2026, 03_10_56 PM.png",
-          "assets/Elysium pics/scenery/Default_a_forest_a_twisted_labyrinth_of_thorns_and_shadows_whe_0.jpg",
-          "assets/Elysium pics/scenery/Elysium forest landscape.jpg",
+          "assets/Elysium pics/scenery/cave in Elysium landscape.webp",
+          "assets/Elysium pics/scenery/cave in Elysium.webp",
+          "assets/Elysium pics/scenery/ChatGPT Image May 10, 2026, 03_10_56 PM.webp",
+          "assets/Elysium pics/scenery/Default_a_forest_a_twisted_labyrinth_of_thorns_and_shadows_whe_0.webp",
+          "assets/Elysium pics/scenery/Elysium forest landscape.webp",
           "assets/Elysium pics/scenery/Elysium landscape.webp",
-          "assets/Elysium pics/scenery/Elysium.jpg",
-          "assets/Elysium pics/scenery/forest 2 in Elysium.jpg",
-          "assets/Elysium pics/scenery/forest area in Elysium.jpg",
-          "assets/Elysium pics/scenery/forest in Elysium.jpg",
-          "assets/Elysium pics/scenery/house in Elysium lake.jpg",
-          "assets/Elysium pics/scenery/house in Elysium.jpg",
-          "assets/Elysium pics/scenery/Lake in Elysium.jpg",
-          "assets/Elysium pics/scenery/Landscape in the forest of Elysium.webp",
-          "assets/Elysium pics/scenery/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1 (1).jpg",
-          "assets/Elysium pics/scenery/magical place in Elysium.jpg",
-          "assets/Elysium pics/scenery/mountain peak in Elysium.jpg",
-          "assets/Elysium pics/scenery/place in Elysium.jpg",
-          "assets/Elysium pics/scenery/place on Elysium.jpg",
-          "assets/Elysium pics/scenery/Ship in Elysium.jpg",
-          "assets/Elysium pics/scenery/some mountains in Elysium.jpg",
-          "assets/Elysium pics/scenery/Sunset on Elysium.jpg",
-          "assets/Elysium pics/scenery/water in Elysium.jpg",
-          "assets/Elysium pics/scenery/waterfall in Elysium.jpg"
+          "assets/Elysium pics/scenery/Elysium.webp",
+          "assets/Elysium pics/scenery/forest area in Elysium.webp",
+          "assets/Elysium pics/scenery/forest in Elysium.webp",
+          "assets/Elysium pics/scenery/house in Elysium lake.webp",
+          "assets/Elysium pics/scenery/house in Elysium.webp",
+          "assets/Elysium pics/scenery/Lake in Elysium.webp",
+          "assets/Elysium pics/scenery/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1 (1).webp",
+          "assets/Elysium pics/scenery/magical place in Elysium.webp",
+          "assets/Elysium pics/scenery/mountain peak in Elysium.webp",
+          "assets/Elysium pics/scenery/place in Elysium.webp",
+          "assets/Elysium pics/scenery/place on Elysium.webp",
+          "assets/Elysium pics/scenery/Ship in Elysium.webp",
+          "assets/Elysium pics/scenery/some mountains in Elysium.webp",
+          "assets/Elysium pics/scenery/Sunset on Elysium.webp",
+          "assets/Elysium pics/scenery/water in Elysium.webp",
+          "assets/Elysium pics/scenery/waterfall in Elysium.webp"
         ]
       },
       {
         "title": "Creatures of Elysium",
         "type": "Creatures",
-        "image": "assets/Elysium pics/creatures/Dragon.jpg",
-        "text": "Dragons, beastmen, old birds of omen, forest critters, phoenix fire, and magic moving beneath the clouds.",
+        "image": "assets/Elysium pics/creatures/Dragon.webp",
+        "text": "Dragons, beastmen, old birds of omen, forest critters, and magic moving beneath the clouds.",
         "images": [
           "assets/Elysium pics/creatures/2 background.webp",
-          "assets/Elysium pics/creatures/a deer in Elysium.jpg",
+          "assets/Elysium pics/creatures/a deer in Elysium.webp",
           "assets/Elysium pics/creatures/Beast in the south.webp",
           "assets/Elysium pics/creatures/Bird in the Elysium north.webp",
           "assets/Elysium pics/creatures/critter in the woods.webp",
-          "assets/Elysium pics/creatures/critters in the wood.jpg",
-          "assets/Elysium pics/creatures/Dragon.jpg",
-          "assets/Elysium pics/creatures/eagles in the mountains.jpg",
-          "assets/Elysium pics/creatures/eExMOEJWLtxmzy9A27zE--1--9hxnw.jpg",
-          "assets/Elysium pics/creatures/faq background.jpg",
-          "assets/Elysium pics/creatures/FXKNGOastM3G3kajO9K6--1--4006h.jpg",
-          "assets/Elysium pics/creatures/g7EWTDkZj1eYRMdLcQ2G--dsxf2_2x-real-esrgan-x4-v3-wdn.jpg",
-          "assets/Elysium pics/creatures/IJlBuCCQf6uUGLUhXZa4--1--2kuyb.jpg",
-          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_of_0 (1).jpg",
-          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1 (3).jpg",
-          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1.jpg",
-          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_photograph_of_a_full_body_shot_realistic_1.jpg",
-          "assets/Elysium pics/creatures/NOoefnzHbUV56VcVkCgq--n50ld.jpg",
-          "assets/Elysium pics/creatures/Phoenix in Elysium.webp",
-          "assets/Elysium pics/creatures/trDmXdL0njD3dSZezm80--1--biuis.jpg"
+          "assets/Elysium pics/creatures/Dragon.webp",
+          "assets/Elysium pics/creatures/eagles in the mountains.webp",
+          "assets/Elysium pics/creatures/eExMOEJWLtxmzy9A27zE--1--9hxnw.webp",
+          "assets/Elysium pics/creatures/faq background.webp",
+          "assets/Elysium pics/creatures/FXKNGOastM3G3kajO9K6--1--4006h.webp",
+          "assets/Elysium pics/creatures/IJlBuCCQf6uUGLUhXZa4--1--2kuyb.webp",
+          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_of_0 (1).webp",
+          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1 (3).webp",
+          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_action_photograph_of_a_full_body_shot_re_1.webp",
+          "assets/Elysium pics/creatures/Leonardo_Diffusion_XL_photograph_of_a_full_body_shot_realistic_1.webp",
+          "assets/Elysium pics/creatures/NOoefnzHbUV56VcVkCgq--n50ld.webp",
+          "assets/Elysium pics/creatures/trDmXdL0njD3dSZezm80--1--biuis.webp"
         ]
       },
       {
         "title": "Magic of Elysium",
         "type": "Magic",
-        "image": "assets/Elysium pics/magic/yin yang background.jpg",
+        "image": "assets/Elysium pics/magic/smokey yin yang background.webp",
         "text": "Blue power, corrupted light, prophecy visions, and shadows awakening beneath the skin.",
         "images": [
-          "assets/Elysium pics/magic/ejEP3NgNOFQOgXe9iuVK--1--vir3k_4x-real-esrgan-x4-plus.jpg",
-          "assets/Elysium pics/magic/ejEP3NgNOFQOgXe9iuVK--2--nhtsw_1.5x-clty-upscale-79bjj.jpg",
-          "assets/Elysium pics/magic/smokey yin yang background.jpg",
-          "assets/Elysium pics/magic/yin yang background.jpg",
-          "assets/Elysium pics/magic/yin yang for a background.jpg"
+          "assets/Elysium pics/magic/ejEP3NgNOFQOgXe9iuVK--1--vir3k_4x-real-esrgan-x4-plus.webp",
+          "assets/Elysium pics/magic/ejEP3NgNOFQOgXe9iuVK--2--nhtsw_1.5x-clty-upscale-79bjj.webp",
+          "assets/Elysium pics/magic/smokey yin yang background.webp",
+          "assets/Elysium pics/magic/yin yang background.webp",
+          "assets/Elysium pics/magic/yin yang for a background.webp"
         ]
       },
       {
         "title": "Relics of Elysium",
         "type": "Relics / Symbols",
-        "image": "assets/Elysium pics/relics and symbols/magical flower in Elysium.jpg",
+        "image": "assets/Elysium pics/relics and symbols/magical flower in Elysium.webp",
         "text": "Eclipse marks, twin-sun signs, strange flowers, and symbols bound to prophecy.",
         "images": [
-          "assets/Elysium pics/relics and symbols/a flower from Elysium.jpg",
+          "assets/Elysium pics/relics and symbols/a flower from Elysium.webp",
           "assets/Elysium pics/relics and symbols/a flower on Elysium.webp",
           "assets/Elysium pics/relics and symbols/Elysium through Garrin's eyes.webp",
-          "assets/Elysium pics/relics and symbols/magical flower in Elysium.jpg",
+          "assets/Elysium pics/relics and symbols/magical flower in Elysium.webp",
           "assets/Elysium pics/relics and symbols/magical plant from Elysium.webp",
-          "assets/Elysium pics/relics and symbols/utjU1lDMsxiNQj3bQDnL--3--3l5ab.jpg"
+          "assets/Elysium pics/relics and symbols/utjU1lDMsxiNQj3bQDnL--3--3l5ab.webp"
         ]
       }
     ]
@@ -910,35 +904,32 @@ const galleryWorlds = {
         "image": "assets/Planet of Xyphara/scenery/magical landscape in planet Xyphara.webp",
         "text": "Bioluminescent forests, glowing petals, cloud towns, oceans, caves, castles, and skies alive with impossible color.",
         "images": [
-          "assets/Planet of Xyphara/scenery/a home in planet Xyphara forest.jpg",
-          "assets/Planet of Xyphara/scenery/a little town in planet Xyphara.jpg",
+          "assets/Planet of Xyphara/scenery/a little town in planet Xyphara.webp",
           "assets/Planet of Xyphara/scenery/a place in planet Xyphara forgoten.webp",
-          "assets/Planet of Xyphara/scenery/a place in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/area in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/building in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/building on planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/Castle in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/cave in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/city near the forest in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/cloud town on planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/fantasy landscape in planet Xyphara.jpg",
+          "assets/Planet of Xyphara/scenery/a place in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/area in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/building in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/building on planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/Castle in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/cave in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/city near the forest in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/cloud town on planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/fantasy landscape in planet Xyphara.webp",
           "assets/Planet of Xyphara/scenery/floating area in planet Xyphara.webp",
-          "assets/Planet of Xyphara/scenery/home in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/house in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/iq6KXn1DxCqt7wZXo548--1--0wrer.jpg",
-          "assets/Planet of Xyphara/scenery/Leonardo_Kino_XL_A_mystical_furrie_glittering_silverhaired_fur_0.jpg",
+          "assets/Planet of Xyphara/scenery/home in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/house in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/iq6KXn1DxCqt7wZXo548--1--0wrer.webp",
+          "assets/Planet of Xyphara/scenery/Leonardo_Kino_XL_A_mystical_furrie_glittering_silverhaired_fur_0.webp",
           "assets/Planet of Xyphara/scenery/magical landscape in planet Xyphara.webp",
           "assets/Planet of Xyphara/scenery/place in planet Xyphara landscape.webp",
-          "assets/Planet of Xyphara/scenery/place in the realm of planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/planet Xyphara landscape.jpg",
+          "assets/Planet of Xyphara/scenery/planet Xyphara landscape.webp",
           "assets/Planet of Xyphara/scenery/planet Xyphara.webp",
-          "assets/Planet of Xyphara/scenery/scary forest in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/some mushrooms on planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/the ocean on planet Xyphara.png",
-          "assets/Planet of Xyphara/scenery/the order's castle in planet Xyphara.jpg",
-          "assets/Planet of Xyphara/scenery/the time in the desert region.jpg",
-          "assets/Planet of Xyphara/scenery/the waterfall in planet Xyphara.jpg",
+          "assets/Planet of Xyphara/scenery/scary forest in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/some mushrooms on planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/the ocean on planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/the order's castle in planet Xyphara.webp",
+          "assets/Planet of Xyphara/scenery/the time in the desert region.webp",
           "assets/Planet of Xyphara/scenery/town landscape in planet Xyphara.webp",
           "assets/Planet of Xyphara/scenery/town on planet Xyphara.webp",
           "assets/Planet of Xyphara/scenery/Volcano in planet Xyphara.webp"
@@ -947,45 +938,51 @@ const galleryWorlds = {
       {
         "title": "Creatures of Xyphara",
         "type": "Creatures",
-        "image": "assets/Planet of Xyphara/creatures/butterfly being.jpg",
+        "image": "assets/Planet of Xyphara/creatures/butterfly being.webp",
         "text": "Morphic beings, Creepers, forest critters, desert creatures, birds, dragonflies, and beautiful hungry things.",
         "images": [
-          "assets/Planet of Xyphara/creatures/bird in forest.jpg",
-          "assets/Planet of Xyphara/creatures/birdy in forest.jpg",
-          "assets/Planet of Xyphara/creatures/butterfly being.jpg",
+          "assets/Planet of Xyphara/creatures/bird in forest.webp",
+          "assets/Planet of Xyphara/creatures/birdy in forest.webp",
+          "assets/Planet of Xyphara/creatures/butterfly being.webp",
           "assets/Planet of Xyphara/creatures/Cat critter in desert.webp",
           "assets/Planet of Xyphara/creatures/critter in the desert.webp",
-          "assets/Planet of Xyphara/creatures/critters in forest.jpg",
+          "assets/Planet of Xyphara/creatures/critters in forest.webp",
           "assets/Planet of Xyphara/creatures/dragonfly.webp",
-          "assets/Planet of Xyphara/creatures/DreamShaper_v7_A_breathtaking_fantasy_scene_set_in_a_glitterin_1.jpg",
-          "assets/Planet of Xyphara/creatures/Leonardo_Lightning_XL_A_vivid_fantasy_concept_art_scene_set_in_1.jpg",
-          "assets/Planet of Xyphara/creatures/onion creature.jpg",
+          "assets/Planet of Xyphara/creatures/DreamShaper_v7_A_breathtaking_fantasy_scene_set_in_a_glitterin_1.webp",
+          "assets/Planet of Xyphara/creatures/Leonardo_Lightning_XL_A_vivid_fantasy_concept_art_scene_set_in_1.webp",
+          "assets/Planet of Xyphara/creatures/onion creature.webp",
           "assets/Planet of Xyphara/creatures/owl creature.webp",
-          "assets/Planet of Xyphara/creatures/small butterfly being.jpg"
+          "assets/Planet of Xyphara/creatures/small butterfly being.webp"
         ]
       },
       {
         "title": "Magic of Xyphara",
         "type": "Magic",
-        "image": "assets/Planet of Xyphara/magic/GZlrVf3oAzC9jIgzqlBN--1--jl556.jpg",
+        "image": "assets/Planet of Xyphara/relics and symbols/FLyw9EbLgZc9eP3lHwd1--1--gzlh6.webp",
         "text": "Time, visions, wings of light, glowing power, and magic rooted deep within the planet.",
         "images": [
-          "assets/Planet of Xyphara/magic/GZlrVf3oAzC9jIgzqlBN--1--jl556.jpg"
+          "assets/Planet of Xyphara/relics and symbols/boat for travel.webp",
+          "assets/Planet of Xyphara/relics and symbols/cactus flower planet Xyphara.webp",
+          "assets/Planet of Xyphara/relics and symbols/caelum and lunaria.webp",
+          "assets/Planet of Xyphara/relics and symbols/flower on planet Xyphara.webp"
         ]
       },
       {
         "title": "Relics of Xyphara",
         "type": "Relics / Symbols",
-        "image": "assets/Planet of Xyphara/relics and symbols/icon of world tree.jpg",
+        "image": "assets/Planet of Xyphara/relics and symbols/icon of world tree.webp",
         "text": "World-tree marks, wing sigils, travel vessels, cactus blooms, and symbols that glow before the truth does.",
         "images": [
           "assets/Planet of Xyphara/relics and symbols/boat for travel.webp",
-          "assets/Planet of Xyphara/relics and symbols/cactus flower planet Xyphara.jpg",
-          "assets/Planet of Xyphara/relics and symbols/flower on planet Xyphara.jpg",
-          "assets/Planet of Xyphara/relics and symbols/FLyw9EbLgZc9eP3lHwd1--1--gzlh6.jpg",
-          "assets/Planet of Xyphara/relics and symbols/icon of world tree.jpg",
-          "assets/Planet of Xyphara/relics and symbols/image of world tree 2.jpg",
-          "assets/Planet of Xyphara/relics and symbols/image of world tree.jpg"
+          "assets/Planet of Xyphara/relics and symbols/cactus flower planet Xyphara.webp",
+          "assets/Planet of Xyphara/relics and symbols/caelum and lunaria.webp",
+          "assets/Planet of Xyphara/relics and symbols/flower on planet Xyphara.webp",
+          "assets/Planet of Xyphara/relics and symbols/FLyw9EbLgZc9eP3lHwd1--1--gzlh6.webp",
+          "assets/Planet of Xyphara/relics and symbols/icon of world tree.webp",
+          "assets/Planet of Xyphara/relics and symbols/image of world tree 2.webp",
+          "assets/Planet of Xyphara/relics and symbols/image of world tree.webp",
+          "assets/Planet of Xyphara/relics and symbols/lumen and lunaria.webp",
+          "assets/Planet of Xyphara/relics and symbols/Madam Lefur.webp"
         ]
       }
     ]
@@ -998,58 +995,58 @@ const galleryWorlds = {
         "title": "The Company",
         "type": "Scenery",
         "image": "assets/What remains of me pics/scenery/city destroyed.webp",
-        "text": "Cold ruins, broken cities, private rooms, cover-world imagery, and places where humanity is measured in pain.",
+        "text": "Cold corridors, broken cities, old experiments, and rooms where humanity is measured in pain.",
         "images": [
-          "assets/What remains of me pics/scenery/Angel in the shower.jpg",
-          "assets/What remains of me pics/scenery/Background for the cover of What remains of me.jpg",
+          "assets/What remains of me pics/scenery/Angel in the shower.webp",
+          "assets/What remains of me pics/scenery/Background for the cover of What remains of me.webp",
+          "assets/What remains of me pics/scenery/city Angel grew up in.webp",
           "assets/What remains of me pics/scenery/city destroyed.webp",
-          "assets/What remains of me pics/scenery/Leonardo_Diffusion_XL_A_view_from_an_ants_perspective_deep_ric_0.jpg",
-          "assets/What remains of me pics/scenery/Leonardo_Diffusion_XL_A_view_from_an_ants_perspective_deep_ric_1.jpg",
-          "assets/What remains of me pics/scenery/lYxK1SvADVhitgde2Fvx--1--0b86w_6.9444x.jpg",
-          "assets/What remains of me pics/scenery/zfsZ0ZIJSiK1nH3oPXf2--4--cxokl_2x.jpg"
+          "assets/What remains of me pics/scenery/old experiments.webp",
+          "assets/What remains of me pics/scenery/the remains of what cities look like.webp",
+          "assets/What remains of me pics/scenery/the soldiers of the company.webp"
         ]
       },
       {
         "title": "The Echo",
         "type": "Magic",
-        "image": "assets/What remains of me pics/magic/ecco unlock on Angel.png",
+        "image": "assets/What remains of me pics/magic/Echo awaken inside Angel.webp",
         "text": "A weapon buried inside a girl who was never meant to survive awakening.",
         "images": [
-          "assets/What remains of me pics/magic/Angel.jpg",
-          "assets/What remains of me pics/magic/Draven on his way to transform.webp",
-          "assets/What remains of me pics/magic/ecco unlock on Angel.png",
-          "assets/What remains of me pics/magic/Steve.png"
+          "assets/What remains of me pics/magic/Draven beast mode.webp",
+          "assets/What remains of me pics/magic/Draven busy transforming.webp",
+          "assets/What remains of me pics/magic/Echo awaken inside Angel.webp",
+          "assets/What remains of me pics/magic/Steve manipuliation.webp"
         ]
       }
     ]
   },
   "future": {
     "label": "Future Realms",
-    "title": "Unwritten Archives",
+    "title": "Future Realms",
     "cards": [
       {
         "title": "Future Realms",
         "type": "Coming Soon",
-        "image": "assets/Background/portal.jpg",
+        "image": "assets/Background/portal.webp",
         "text": "New worlds are forming in the dark. Their doors have not opened yet.",
         "images": [
-          "assets/Background/portal.jpg",
-          "assets/Background/fan art.jpg"
+          "assets/Background/portal.webp",
+          "assets/Background/color background.webp"
         ]
       }
     ]
   },
   "fanart": {
     "label": "Fan Art Portal",
-    "title": "Reader-Born Archive",
+    "title": "Fan Art Portal",
     "cards": [
       {
         "title": "Fan Art Portal",
         "type": "Coming Soon",
-        "image": "assets/Background/fan art.jpg",
+        "image": "assets/Background/fan art.webp",
         "text": "A future space for reader artwork, credited submissions, and community creations.",
         "images": [
-          "assets/Background/fan art.jpg"
+          "assets/Background/fan art.webp"
         ]
       }
     ]
