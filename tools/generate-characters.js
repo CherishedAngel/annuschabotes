@@ -84,7 +84,7 @@ function nav() {
   return `<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="books.html">Books</a><a href="author.html">Author</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a><a href="gallery.html">Gallery</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav><div class="header-actions"><a class="tiny-link" href="login.html">Sign in</a></div></header>`;
 }
-function footer(quote = "Every soul has a secret. Every secret leaves a scar.") {
+function footer(quote = "Some were shaped by magic. Others were broken by it.") {
   return `<footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>${esc(quote)}</p></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a><a href="gallery.html">Gallery</a></div><div><p class="footer-title">Reader</p><a href="user.html">My Chronicle</a><a href="cart.html">Satchel</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use &amp; Sale</a><a href="content-disclaimer.html">Content Disclaimer</a></div></div></footer>`;
 }
 function tagList(tags) {
@@ -150,9 +150,6 @@ function characterButtons(group) {
 
 fs.writeFileSync(path.join(root, "characters.html"), archivePage());
 for (const ch of chars) fs.writeFileSync(path.join(root, ch.slug), pageFor(ch));
-fs.writeFileSync(path.join(root, "character-nyx.html"), `${head("Character Redirect", "Redirect from removed Nyx placeholder page.", "Lumen Nox, Planet of Xyphara, Annuscha Botes characters")}
-<body style="--page-image:url('assets/Planet of Xyphara/scenery/planet Xyphara.webp')">${nav()}<main id="main-content" class="main"><section class="section wrap not-found-hero"><article class="not-found-panel"><p class="not-found-code">Moved</p><h1>Nyx is not part of the Chronicle.</h1><p class="lead">This old placeholder now points to Lumen Nox, the correct blue moth character.</p><div class="button-row"><a class="btn primary" href="character-lumen.html">Open Lumen Nox</a><a class="btn ghost" href="characters.html#xyphara">Back to Characters</a></div></article></section></main>${footer("Soft light, dangerous wings.")}<script src="script.js"></script></body></html>
-`);
 
 for (const [file, group] of [["book-elysium.html", "elysium"], ["book-remains.html", "remains"], ["book-xyphara.html", "xyphara"]]) {
   const full = path.join(root, file);
@@ -163,8 +160,5 @@ for (const [file, group] of [["book-elysium.html", "elysium"], ["book-remains.ht
 
 const scriptPath = path.join(root, "script.js");
 let script = fs.readFileSync(scriptPath, "utf8");
-script = script.replace('"character", "cain", "elysia", "garrin", "shade", "mia", "nyx", "angel"', '"character", "cain", "elysia", "garrin", "shade", "mia", "angel", "lumen", "lunaria", "draven", "steve"');
 fs.writeFileSync(scriptPath, script);
 console.log(`Generated ${chars.length} character pages, archive, and book links.`);
-
-
