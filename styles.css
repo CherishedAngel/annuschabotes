@@ -3303,6 +3303,12 @@ body.user-page {
 --page-image: url("assets/Background/user background.webp");
 }
 
+html.auth-pending body[data-auth-required="reader"] main,
+html.auth-pending body[data-auth-required="reader"] footer {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .reader-hero {
   position: relative;
 }
@@ -3970,8 +3976,11 @@ li:hover::before {
   inset: 0;
   z-index: 150;
   display: none;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
   padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: rgba(3,3,4,.84);
   backdrop-filter: blur(18px);
 }
@@ -3980,10 +3989,17 @@ li:hover::before {
 
 .age-box {
   width: min(640px, 100%);
+  margin-block: max(18px, 3vh);
   padding: 34px;
   border: 1px solid var(--line-hot);
   background: var(--panel);
   box-shadow: var(--shadow), 0 0 70px rgba(72,223,255,.12);
+}
+
+@media (min-height: 780px) {
+  .age-gate {
+    align-items: center;
+  }
 }
 
 .age-warning {
