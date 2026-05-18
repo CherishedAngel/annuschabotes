@@ -7,7 +7,7 @@
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
   <title>Sign In | Annuscha Botes</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.4/auth0-spa-js.production.js" defer></script>
 </head>
 <body class="login-page">
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -21,40 +21,41 @@
         <p class="eyebrow">Reader Gate</p>
         <h3>Sign In</h3>
         <div class="social-auth-stack">
-          <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="onSignIn"></div>
-          <button class="btn ghost provider-auth-btn google-auth-btn" type="button" data-provider-preview aria-label="Sign in with Google"><span class="google-auth-mark" aria-hidden="true">G</span> Sign in with Google</button>
+          <button class="btn ghost provider-auth-btn google-auth-btn" id="googleLoginBtn" type="button" aria-label="Sign in with Google"><span class="google-auth-mark" aria-hidden="true">G</span> Sign in with Google</button>
           <div class="auth-divider">or</div>
-          <button class="btn ghost provider-auth-btn facebook-auth-btn" type="button" data-provider-preview aria-label="Sign in with Facebook"><span class="fe--facebook" aria-hidden="true"></span> Sign in with Facebook</button>
+          <button class="btn ghost provider-auth-btn facebook-auth-btn" id="facebookLoginBtn" type="button" aria-label="Sign in with Facebook"><span class="fe--facebook" aria-hidden="true"></span> Sign in with Facebook</button>
         </div>
         
         <div class="divider"></div>
         <form data-reader-login>
-          <label>Name or email<input type="text" autocomplete="username"></label>
-          <label>Password<input type="password" autocomplete="current-password"></label>
-          <label class="form-check"><input type="checkbox"> Remember me</label>
+          <label>Name or email<input name="username" type="text" autocomplete="username"></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password"></label>
+          <label class="form-check"><input name="remember_login" type="checkbox"> Remember me</label>
           <a class="tiny-link" href="mailto:hello@annuschabotes.com?subject=Password%20reset%20request">Forgot password?</a>
-          <p class="tag">Password resets require secure backend authentication before launch.</p>
-          <button class="btn primary" type="submit">Sign In</button>
+          <p class="tag">Sign-in opens Auth0's secure reader gate. This page does not store passwords.</p>
+          <p class="tag" data-auth-status aria-live="polite"></p>
+          <button class="btn primary" id="loginBtn" type="submit">Sign In</button>
         </form>
       </article>
       <article id="join" class="panel panel-pad auth-panel reader-library-panel">
         <p class="eyebrow">Reader Library</p>
         <h3>Create your reader account</h3>
           <form class="account-create-form">
-          <label>Name<input autocomplete="name" required></label>
-          <label>Email<input type="email" autocomplete="email" required></label>
-          <label>Password<input type="password" autocomplete="new-password" required></label>
-          <label>Confirm password<input type="password" autocomplete="new-password" required></label>
-          <label>Optional contact number<input type="tel" autocomplete="tel"></label>
-          <label class="form-check"><input type="checkbox"> Remember me</label>
-          <label class="form-check"><input type="checkbox" data-accept-terms> I accept the Terms of Use & Sale</label>
-          <button class="btn primary" type="button" data-create-account disabled>Create New Account</button>
+          <label>Name<input name="account_name" autocomplete="name" required></label>
+          <label>Email<input name="account_email" type="email" autocomplete="email" required></label>
+          <label>Password<input name="account_password" type="password" autocomplete="new-password" required></label>
+          <label>Confirm password<input name="account_password_confirm" type="password" autocomplete="new-password" required></label>
+          <label>Optional contact number<input name="account_phone" type="tel" autocomplete="tel"></label>
+          <label class="form-check"><input name="remember_account" type="checkbox"> Remember me</label>
+          <label class="form-check"><input name="accept_terms" type="checkbox" data-accept-terms> I accept the Terms of Use & Sale</label>
+          <button class="btn primary" id="createAccountBtn" type="button" data-create-account disabled>Create New Account</button>
         </form>
       </article>
     </div>
   </section>
 </main>
 <footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>“The archive remembers those who return.”</p></div><div><p class="footer-title">Reader</p><a href="faq.html">FAQ</a></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="lore.html">Lore</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a></div></div></footer>
-<script src="script.js"></script>
+<script src="auth.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
