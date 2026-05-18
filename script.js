@@ -125,10 +125,6 @@ function ageGate(onVerified) {
       <div class="age-warning" aria-hidden="true">18+</div>
       <p class="eyebrow">Mature Fantasy Content</p>
       <h2 id="age-title">Enter Your Date of Birth</h2>
-      <p>This website contains fantasy fiction, mature themes, violence, dark romance, and age-restricted content.</p>
-      <p style="margin-top:14px">By entering this site, you confirm you are 18 years or older, understand the nature of the content, and agree to the site's <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
-      <p style="margin-top:10px">This is a self-declared age gate, not government ID or real-world identity verification.</p>
-      <p class="quote" style="margin-top:14px">Viewer discretion advised.</p>
       <div class="dob-grid">
         <label>Day<input inputmode="numeric" autocomplete="bday-day" name="day" placeholder="DD" maxlength="2" required></label>
         <label>Month<input inputmode="numeric" autocomplete="bday-month" name="month" placeholder="MM" maxlength="2" required></label>
@@ -136,6 +132,9 @@ function ageGate(onVerified) {
       </div>
       <p class="age-error" data-age-error aria-live="polite"></p>
       <button class="btn primary" type="submit">Enter</button>
+      <p>This website contains mature fantasy fiction, violence, dark romance, and age-restricted content.</p>
+      <p class="age-confirm">By entering, you confirm you are 18+, understand the content, and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. This is a self-declared age gate.</p>
+      <p class="quote age-discretion">Viewer discretion advised.</p>
     </form>`;
   document.body.appendChild(gate);
   const form = gate.querySelector("[data-age-form]");
@@ -283,15 +282,18 @@ function ravenAssistant() {
     '  <div class="raven-header">',
     '    <div>',
     '      <p class="eyebrow">The Raven</p>',
-    '      <h3>Welcome, wanderer. I am the Raven of CherishedAngel&#39;s Chronicles. Ask what the shadows remember, or choose a path below.</h3>',
+    '      <h3>Welcome, wanderer. I am the Raven of CherishedAngel&#39;s Chronicles.</h3>',
     '    </div>',
     '    <button class="raven-close" type="button" aria-label="Close The Raven">&#x263D;&#x263E;</button>',
     '  </div>',
     '  <form class="raven-search" role="search">',
     '    <label for="raven-query" class="sr-only">Ask The Raven</label>',
-    '    <input id="raven-query" type="search" placeholder="Search books, characters, lore..." autocomplete="off">',
+    '    <input id="raven-query" name="raven_query" type="search" placeholder="Search books, characters, lore..." autocomplete="off">',
     '    <button class="btn primary" type="submit">Ask</button>',
     '  </form>',
+    '  <div class="raven-response" role="status" aria-live="polite">',
+    '    <p>Ask what the shadows remember, or choose a path below.</p>',
+    '  </div>',
     '  <div class="raven-quick" aria-label="Quick Raven links">',
     '    <button type="button" data-raven-query="books">Books</button>',
     '    <button type="button" data-raven-query="characters">Characters</button>',
@@ -376,6 +378,7 @@ function ravenAssistant() {
     response.innerHTML = matches.length
       ? renderResults(matches)
       : '<p>I could not find that record. Try Books, Characters, Gallery, Lore, FAQ, Buy a Book, or Contact.</p>';
+    response.scrollTop = 0;
   };
   const setOpen = (open) => {
     panel.hidden = !open;
@@ -692,10 +695,18 @@ function orderForm() {
     }
     updatePayment();
     if (status) {
+      const canCheckout = sent && paymentLink && paymentLink.href && !paymentLink.href.endsWith("contact.html");
       status.querySelector("[data-order-status-title]").textContent = sent ? "Order request sent" : "The raven lost its way";
       status.querySelector("[data-order-status-copy]").textContent = sent
-        ? "Thank you. Your order request has been sent. Please complete payment through the secure Payhip checkout button below."
+        ? (canCheckout
+            ? "Thank you. Your order request has been sent. Opening secure Payhip checkout now."
+            : "Thank you. Your order request has been sent. This title does not have a public Payhip checkout link yet, so please use the contact option below.")
         : "The order form could not send right now. Please try again, or contact Annuscha directly through the Correspondence page.";
+      if (canCheckout) {
+        window.setTimeout(() => {
+          window.location.href = paymentLink.href;
+        }, 650);
+      }
     }
     status?.classList.add("show");
     status?.focus();
@@ -1162,10 +1173,13 @@ function spoilerSafeCharacters() {
   const toggle = document.getElementById("spoilerSafeToggle");
   if (!toggle) return;
   const label = document.querySelector("[data-spoiler-state]");
+  const lock = document.querySelector("[data-spoiler-lock]");
   const apply = () => {
     document.body.classList.toggle("spoiler-safe", toggle.checked);
-    if (label) label.textContent = toggle.checked ? "ON" : "OFF";
+    if (label) label.textContent = toggle.checked ? "Basic details only" : "Unlocked profile view";
+    if (lock) lock.textContent = toggle.checked ? "Locked" : "Unlocked";
     toggle.setAttribute("aria-checked", String(toggle.checked));
+    toggle.setAttribute("aria-label", toggle.checked ? "Unlock character profile details" : "Lock character profile details");
   };
   toggle.addEventListener("change", apply);
   apply();
