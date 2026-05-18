@@ -133,7 +133,7 @@ function ageGate(onVerified) {
       <p class="age-error" data-age-error aria-live="polite"></p>
       <button class="btn primary" type="submit">Enter</button>
       <p>This website contains mature fantasy fiction, violence, dark romance, and age-restricted content.</p>
-      <p class="age-confirm">By entering, you confirm you are 18+, understand the content, and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. This is a self-declared age gate.</p>
+      <p class="age-confirm">By entering, you confirm you are 18+ and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>. This is a self-declared age gate.</p>
       <p class="quote age-discretion">Viewer discretion advised.</p>
     </form>`;
   document.body.appendChild(gate);
