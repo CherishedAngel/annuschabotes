@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Order books by Annuscha Botes through secure external checkout.">
@@ -35,7 +36,8 @@
 All payments are securely processed through trusted external providers such as Payhip. This website never collects or stores card numbers, CVV codes, or banking information.
 
 Once your purchase is complete, your digital copy will be delivered safely through the selected provider.</p>
-      <form class="order-form" data-order-form action="https://formspree.io/f/mjvqqgwb" method="POST">
+      <form class="order-form" data-order-form action="https://formspree.io/f/mlgzagbw" method="POST">
+        <input type="hidden" name="_subject" value="New website message from Annuscha Botes site">
         <div class="columns-2">
           <label>Name and surname
             <input name="name" autocomplete="name" placeholder="Elysia Nightshade" required>
@@ -79,10 +81,10 @@ Once your purchase is complete, your digital copy will be delivered safely throu
       </form>
       <article class="panel panel-pad order-status" data-order-status tabindex="-1" aria-live="polite">
         <p class="eyebrow">Order noted</p>
-        <h3>Continue to Payhip</h3>
-        <p>Please complete payment through the secure Payhip checkout button. Delivery of paid PDFs/audio should be handled by Payhip fulfillment, manual email delivery, or a secure backend after payment confirmation.</p>
+        <h3 data-order-status-title>Continue to Payhip</h3>
+        <p data-order-status-copy>Please complete payment through the secure Payhip checkout button. Delivery of paid PDFs/audio should be handled by Payhip fulfillment, manual email delivery, or a secure backend after payment confirmation.</p>
         <div class="button-row" style="margin-top:18px">
-          <a class="btn primary payhip-buy-button" data-payment-link data-product="ZxdEY" href="#">Complete Payhip Checkout</a>
+          <a class="btn primary payhip-buy-button" data-payment-link href="https://payhip.com/b/zXdEY" data-target-variant="1778471563630" data-theme="grey" data-product="zXdEY">Complete Payhip Checkout</a>
           <a class="btn ghost" href="contact.html">Ask a Question</a>
         </div>
         <div class="button-row" data-product-payment-links style="margin-top:16px"></div>
@@ -109,7 +111,6 @@ Some worlds refuse to let go.</p></div>
     <div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a><a href="content-disclaimer.html">Content Disclaimer</a></div>
   </div>
 </footer>
-<script type="text/javascript" src="https://payhip.com/embed_page.js?v=24u6985"></script>
 <script src="script.js"></script>
 </body>
 </html>
