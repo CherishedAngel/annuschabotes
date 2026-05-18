@@ -4088,13 +4088,15 @@ li:hover::before {
 .age-gate {
   position: fixed;
   inset: 0;
-  z-index: 150;
+  z-index: 99999;
   display: none;
-  align-items: center;
+  align-items: start;
   justify-items: center;
-  padding: 8px;
-  overflow: hidden;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
+  min-height: 100vh;
   min-height: 100dvh;
   background: rgba(3,3,4,.84);
   backdrop-filter: blur(18px);
@@ -4104,15 +4106,17 @@ li:hover::before {
 
 .age-box {
   width: min(520px, 100%);
-  max-height: calc(100dvh - 16px);
-  margin: 0;
-  padding: clamp(10px, 2.2vh, 18px);
+  max-height: none;
+  margin: auto 0;
+  padding: clamp(12px, 2.5vh, 22px);
   border: 1px solid var(--line-hot);
   background: var(--panel);
   box-shadow: var(--shadow), 0 0 70px rgba(72,223,255,.12);
-  overflow: hidden;
+  overflow: visible;
+  display: grid;
   gap: clamp(6px, 1.25vh, 10px);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .age-box h2 {
@@ -4187,8 +4191,8 @@ li:hover::before {
 
 @media (max-height: 620px) {
   .age-box {
-    padding: 8px 10px;
-    gap: 5px;
+    align-items: start;
+    padding: 8px;
   }
 
   .age-box > p:not(.eyebrow),
