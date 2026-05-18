@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="My Chronicle, reader dashboard, purchased books, reader satchel, fantasy inventory profile, Annuscha Botes account, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
+  <script>document.documentElement.classList.add("auth-pending");</script>
   <title>My Chronicle | Annuscha Botes</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.4/auth0-spa-js.production.js" defer></script>
 </head>
 <body class="user-page" data-auth-required="reader">
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -24,8 +26,8 @@
   </nav>
   <div class="header-actions">
     <a class="reader-pill" href="user.html" aria-label="Reader profile">
-      <img src="assets/ideas/new Author image.webp" alt="" loading="lazy" decoding="async">
-      <span>Elysia Reader</span>
+      <img id="navReaderAvatar" src="assets/ideas/new Author image.webp" alt="" loading="lazy" decoding="async">
+      <span id="navReaderName">Reader</span>
     </a>
   </div>
 </header>
@@ -43,10 +45,10 @@
             <img id="readerAvatar" class="reader-avatar-large" src="assets/ideas/new Author image.webp" alt="Reader avatar" loading="lazy" decoding="async">
           </div>
           <p class="eyebrow">Reader Profile</p>
-          <h3>Elysia Reader</h3>
-          <p class="profile-email">elysia.reader@example.com</p>
+          <h3 id="readerDisplayName">Reader</h3>
+          <p class="profile-email" id="readerEmail">Signed in with Auth0</p>
           <div class="profile-actions" aria-label="Profile actions">
-            <input type="file" id="avatarUpload" accept="image/*" hidden>
+            <input name="avatar" type="file" id="avatarUpload" accept="image/*" hidden>
             <button class="btn ghost" id="changeAvatarBtn" type="button">Change Avatar</button>
           </div>
         </article>
@@ -54,23 +56,23 @@
         <article class="reader-status-card reader-details-card">
           <p class="eyebrow">Reader Details</p>
           <div class="settings-list compact-settings">
-            <p><strong>Name</strong><span>Elysia Reader</span></p>
-            <p><strong>Email</strong><span>elysia.reader@example.com</span></p>
+            <p><strong>Name</strong><span data-auth-name>Reader</span></p>
+            <p><strong>Email</strong><span data-auth-email>Signed in with Auth0</span></p>
             <p><strong>Contact</strong><span>+27 12 345 6789</span></p>
           </div>
           <label class="mini-field" for="favorite-book">Favourite Book</label>
-          <select id="favorite-book" class="reader-select">
+          <select id="favorite-book" name="favorite_book" class="reader-select">
             <option>Eclipse of Elysium</option>
             <option>Planet of Xyphara</option>
             <option>What Remains of Me</option>
           </select>
-          <label class="reader-checkbox"><input type="checkbox" checked> Monthly newsletter updates</label>
+          <label class="reader-checkbox"><input name="newsletter_updates" type="checkbox" checked> Monthly newsletter updates</label>
           <div class="profile-actions" aria-label="Account actions">
             <a class="btn ghost" href="login.html#join">Edit Details</a>
             <button class="btn ghost account-delete-btn" type="button" aria-describedby="deleteTip">Account Deletion Request</button>
             <span class="delete-tooltip" id="deleteTip" role="tooltip">This will request manual account deletion until secure backend account management is connected.</span>
           </div>
-          <button class="btn sign-out-btn" type="button" data-sign-out>Sign Out</button>
+          <button class="btn sign-out-btn" id="logoutBtn" type="button" data-sign-out>Sign Out</button>
         </article>
 
       </aside>
@@ -119,6 +121,7 @@
   </section>
 </main>
 <footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Membership within the court of shadows has its advantages&hellip; if your soul survives the initiation.</p></div><div><p class="footer-title">Reader</p><a href="order.html">Order</a></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="lore.html">Lore</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a></div></div></footer>
-<script src="script.js"></script>
+<script src="auth.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
