@@ -573,6 +573,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   filter: saturate(1.08) contrast(1.05);
 }
 
@@ -758,6 +759,50 @@ font-size: 1.2rem;
 
 
 .btn.ghost { background: rgba(5,7,12,.38); }
+
+.btn.payhip-buy-button,
+a.payhip-buy-button.btn,
+a.payhip-buy-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 22px !important;
+  padding: 12px 22px !important;
+  border: 1px solid rgba(199, 246, 255, .42) !important;
+  border-radius: 999px !important;
+  color: var(--ink) !important;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,255,255,.12), transparent 30%),
+    linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.015)),
+    rgba(3, 6, 12, .72) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 0 24px rgba(72,223,255,.11) !important;
+  font: inherit !important;
+  font-size: 1.rem !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  line-height: 1 !important;
+}
+
+.btn.payhip-buy-button:hover,
+a.payhip-buy-button.btn:hover,
+a.payhip-buy-button:hover {
+  color: #031424 !important;
+  background:
+    radial-gradient(circle at 22% 8%, rgba(255,255,255,.28), transparent 24%),
+    var(--iridescent),
+    rgba(11,16,24,.58) !important;
+  border-color: rgba(199,246,255,.72) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 0 36px rgba(72,223,255,.24), 0 0 80px rgba(255,109,168,.12) !important;
+}
+
+.btn.payhip-buy-button:active,
+a.payhip-buy-button.btn:active,
+a.payhip-buy-button:active {
+  color: #062033 !important;
+  background:
+    radial-gradient(circle at 22% 8%, rgba(255,255,255,.22), transparent 26%),
+    linear-gradient(120deg, rgba(86,231,255,.68), rgba(117,255,216,.52), rgba(189,164,255,.58), rgba(255,140,202,.46), rgba(255,242,199,.48)) !important;
+}
 
 .metric-grid {
   display: grid;
@@ -2347,7 +2392,8 @@ button.world-pulse.is-disabled:hover {
   align-items: center;
   gap: 12px;
   margin-top: 24px;
-  padding: 10px 14px;
+  max-width: min(100%, 640px);
+  padding: 10px 16px;
   border: 1px solid rgba(199,246,255,.36);
   border-radius: 999px;
   color: #eefcff;
@@ -2359,14 +2405,82 @@ button.world-pulse.is-disabled:hover {
 }
 
 .spoiler-toggle input {
+  flex: 0 0 auto;
   width: 42px;
   height: 22px;
   min-height: 0;
-  accent-color: #56e7ff;
+  appearance: none;
+  border: 1px solid rgba(199,246,255,.42);
+  border-radius: 999px;
+  background: rgba(4, 7, 14, .94);
+  box-shadow: inset 0 0 12px rgba(0,0,0,.5);
   cursor: pointer;
+  position: relative;
 }
 
-.spoiler-safe .character-card .content p:nth-of-type(n+4) {
+.spoiler-toggle input::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 2px;
+  border-radius: 50%;
+  background: rgba(199,246,255,.86);
+  box-shadow: 0 0 12px rgba(86,231,255,.42);
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.spoiler-toggle input:checked::before {
+  transform: translateX(18px);
+  background: #ff9fc7;
+  box-shadow: 0 0 16px rgba(255,109,168,.46);
+}
+
+.spoiler-toggle input:focus-visible {
+  outline: 2px solid rgba(199,246,255,.9);
+  outline-offset: 3px;
+}
+
+.spoiler-toggle > span:last-child {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.spoiler-toggle strong {
+  color: var(--ink);
+}
+
+.spoiler-toggle small {
+  display: block;
+  color: rgba(210, 231, 245, .72);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.spoiler-lock {
+  flex: 0 0 auto;
+  min-width: 74px;
+  padding: 5px 9px;
+  border: 1px solid rgba(199,246,255,.34);
+  border-radius: 999px;
+  background: rgba(5, 8, 16, .82);
+  color: #bff9ff;
+  text-align: center;
+  box-shadow: inset 0 0 18px rgba(86,231,255,.08);
+}
+
+body:not(.spoiler-safe) .spoiler-lock {
+  color: #081421;
+  background: var(--iridescent);
+}
+
+.spoiler-safe .character-card .content p:nth-of-type(n+3) {
   display: none;
 }
 
@@ -3976,11 +4090,12 @@ li:hover::before {
   inset: 0;
   z-index: 150;
   display: none;
-  align-items: start;
+  align-items: center;
   justify-items: center;
-  padding: 18px;
+  padding: 10px;
   overflow-y: auto;
   overscroll-behavior: contain;
+  min-height: 100dvh;
   background: rgba(3,3,4,.84);
   backdrop-filter: blur(18px);
 }
@@ -3988,44 +4103,80 @@ li:hover::before {
 .age-gate.show { display: grid; }
 
 .age-box {
-  width: min(640px, 100%);
-  margin-block: max(18px, 3vh);
-  padding: 34px;
+  width: min(600px, 100%);
+  max-height: calc(100dvh - 20px);
+  margin: 0;
+  padding: clamp(14px, 3vh, 26px);
   border: 1px solid var(--line-hot);
   background: var(--panel);
   box-shadow: var(--shadow), 0 0 70px rgba(72,223,255,.12);
+  overflow-y: auto;
 }
 
-@media (min-height: 780px) {
-  .age-gate {
-    align-items: center;
-  }
+.age-box h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.65rem, 6.3vw, 2.9rem);
+  line-height: .92;
 }
 
 .age-warning {
   display: inline-grid;
   place-items: center;
-  width: 62px;
-  height: 62px;
-  margin-bottom: 18px;
+  width: clamp(38px, 7vh, 54px);
+  height: clamp(38px, 7vh, 54px);
+  margin-bottom: 8px;
   border-radius: 50%;
   border: 1px solid rgba(255,109,168,.55);
   color: #fff;
-  font: 700 1.25rem "Ander Brush", serif;
+  font: 700 clamp(1rem, 3vh, 1.2rem) "Ander Brush", serif;
   box-shadow: 0 0 38px rgba(255,109,168,.18), inset 0 0 20px rgba(86,231,255,.12);
+}
+
+.age-box > p:not(.eyebrow),
+.age-confirm,
+.age-discretion {
+  margin-top: 8px;
+  font-size: clamp(.78rem, 1.8vh, .94rem);
+  line-height: 1.32;
+}
+
+.age-box .eyebrow {
+  margin-bottom: 8px;
 }
 
 .dob-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 22px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .age-error {
   min-height: 1.5em;
-  margin-top: 14px;
+  margin: 6px 0 0;
   color: #ffd2dd;
+}
+
+.age-box .btn {
+  min-height: 44px;
+  margin-top: 4px;
+}
+
+@media (max-height: 620px) {
+  .age-box {
+    padding: 12px 14px;
+  }
+
+  .age-box > p:not(.eyebrow),
+  .age-confirm,
+  .age-discretion {
+    font-size: .78rem;
+    line-height: 1.28;
+  }
+
+  .dob-grid {
+    margin-top: 10px;
+  }
 }
 
 .cookie-consent {
