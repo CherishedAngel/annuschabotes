@@ -1,11 +1,11 @@
 const colors = ["#56e7ff", "#75ffd8", "#bda4ff", "#ff8cca", "#fff2c7"];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const donationLink = "https://paypal.me/CherishedAngelArt";
-const formspreeEndpoint = "https://formspree.io/f/mjvqqgwb";
+const formspreeEndpoint = "https://formspree.io/f/mlgzagbw";
 const payhipProducts = {
-  "Eclipse of Elysium": "ZxdEY",
+  "Eclipse of Elysium": "PAYHIP_ELYSIUM_PRODUCT_KEY",
   "Planet of Xyphara": "PAYHIP_XYPHARA_PRODUCT_KEY",
-  "What Remains of Me": "PAYHIP_REMAINS_PRODUCT_KEY",
+  "What Remains of Me": "zXdEY",
   audio: "PAYHIP_AUDIO_PRODUCT_KEY"
 };
 const socialLinks = {
@@ -16,95 +16,16 @@ const socialLinks = {
   Payhip: "https://payhip.com/CherishedAngelArt",
   Amazon: "https://www.amazon.com/stores/author/B0FMR57MXP/about?ccs_id=55afa422-63f9-445d-8b64-bdae5d80631c"
 };
-const readerAuthPreviewKey = "annuscha-reader-auth-preview";
 const ageGateStorageKey = "annuscha-age-verified";
 const cookieConsentKey = "annuscha-cookie-consent";
 
-function onSignIn(googleUser) {
-  if (googleUser?.credential) {
-    console.log("Google credential received. Send this ID token to a secure backend for verification.");
-    setReaderPreviewSession();
-    redirectToReaderNext();
-    return;
-  }
-  const profile = googleUser.getBasicProfile?.();
-  if (!profile) return;
-  console.log("ID: " + profile.getId());
-  console.log("Name: " + profile.getName());
-  console.log("Image URL: " + profile.getImageUrl());
-  console.log("Email: " + profile.getEmail());
-  // Do not send to your backend yet. Use an ID token instead once secure account sessions are implemented.
-}
-
-window.onSignIn = onSignIn;
-
-function setReaderPreviewSession() {
-  try {
-    localStorage.setItem(readerAuthPreviewKey, "true");
-  } catch (error) {
-    sessionStorage.setItem(readerAuthPreviewKey, "true");
-  }
-}
-
-function clearReaderPreviewSession() {
-  try {
-    localStorage.removeItem(readerAuthPreviewKey);
-  } catch (error) {
-    sessionStorage.removeItem(readerAuthPreviewKey);
-  }
-  sessionStorage.removeItem(readerAuthPreviewKey);
-}
-
-function hasReaderAuthSession() {
-  // Replace this preview hook with Firebase, Supabase, Auth0, or another secure auth provider.
-  // A frontend localStorage flag is only for static-site preview and is not secure authentication.
-  const providerSession = window.annuschaAuthSession?.user || window.ANNUSCHA_AUTH_SESSION?.user;
-  let previewSession = false;
-  try {
-    previewSession = localStorage.getItem(readerAuthPreviewKey) === "true";
-  } catch (error) {
-    previewSession = sessionStorage.getItem(readerAuthPreviewKey) === "true";
-  }
-  return Boolean(providerSession || previewSession);
-}
-
-function redirectToReaderNext() {
-  const params = new URLSearchParams(window.location.search);
-  const next = params.get("next");
-  window.location.href = next && next.endsWith(".html") ? next : "user.html";
-}
-
 function readerAuthGuard() {
-  if (!document.body.matches("[data-auth-required='reader']")) return false;
-  if (hasReaderAuthSession()) {
-    document.documentElement.classList.add("reader-authenticated");
-    return false;
-  }
-  const currentPage = window.location.pathname.split("/").pop() || "user.html";
-  window.location.replace(`login.html?next=${encodeURIComponent(currentPage)}`);
-  return true;
+  // Auth0 protection is handled in auth.js. Keep visual/site behavior separate from login
+  // so this static site never creates a fake localStorage authentication session.
+  return false;
 }
 
 function readerSessionControls() {
-  document.querySelectorAll("[data-provider-preview]").forEach((button) => {
-    button.addEventListener("click", () => {
-      setReaderPreviewSession();
-      redirectToReaderNext();
-    });
-  });
-  document.querySelectorAll("[data-reader-login]").forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      setReaderPreviewSession();
-      redirectToReaderNext();
-    });
-  });
-  document.querySelectorAll("[data-sign-out]").forEach((button) => {
-    button.addEventListener("click", () => {
-      clearReaderPreviewSession();
-      window.location.href = "login.html";
-    });
-  });
   const avatarBtn = document.getElementById("changeAvatarBtn");
   const avatarInput = document.getElementById("avatarUpload");
   const avatarImg = document.getElementById("readerAvatar");
@@ -722,14 +643,19 @@ function orderForm() {
   const updatePayment = () => {
     const book = form.querySelector('[name="book"]')?.value || "Eclipse of Elysium";
     const wantsAudio = form.querySelector('[name="product"][value="audio"]')?.checked;
-    const productKey = wantsAudio ? payhipProducts.audio : payhipProducts[book] || payhipProducts["Eclipse of Elysium"];
+      const productKey = wantsAudio ? payhipProducts.audio : payhipProducts[book] || payhipProducts["What Remains of Me"];
     const isPlaceholder = productKey.startsWith("PAYHIP_");
     if (paymentLink) {
-      paymentLink.href = isPlaceholder ? "contact.html" : "#";
+      paymentLink.href = isPlaceholder ? "contact.html" : `https://payhip.com/b/${productKey}`;
       paymentLink.textContent = isPlaceholder ? "Ask for Payhip Link" : "Complete Payhip Checkout";
       paymentLink.classList.toggle("payhip-buy-button", !isPlaceholder);
-      if (isPlaceholder) delete paymentLink.dataset.product;
-      else paymentLink.dataset.product = productKey;
+      if (isPlaceholder) {
+        delete paymentLink.dataset.product;
+        delete paymentLink.dataset.targetVariant;
+      } else {
+        paymentLink.dataset.product = productKey;
+        if (productKey === "zXdEY") paymentLink.dataset.targetVariant = "1778471563630";
+      }
     }
     if (productButtons) {
       const buttons = Object.entries(payhipProducts)
@@ -737,7 +663,8 @@ function orderForm() {
         .map(([name, key]) => {
           const placeholder = key.startsWith("PAYHIP_");
           if (placeholder) return `<a class="btn ghost" href="contact.html">${name}</a>`;
-          return `<a class="btn ghost payhip-buy-button" data-product="${key}" href="#">${name}</a>`;
+          const variant = key === "zXdEY" ? ' data-target-variant="1778471563630"' : "";
+          return `<a class="btn ghost payhip-buy-button" href="https://payhip.com/b/${key}" data-theme="grey" data-product="${key}"${variant}>${name}</a>`;
         }).join("");
       productButtons.innerHTML = `
         ${buttons}
@@ -749,18 +676,27 @@ function orderForm() {
   updatePayment();
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    let sent = true;
     if (form.action && form.action.includes("formspree.io")) {
       try {
-        await fetch(form.action, {
+        const response = await fetch(form.action, {
           method: "POST",
           body: new FormData(form),
           headers: { Accept: "application/json" }
         });
+        if (!response.ok) throw new Error(`Formspree responded with ${response.status}`);
       } catch (error) {
-        console.warn("Formspree submission could not be completed from this static preview.", error);
+        sent = false;
+        console.warn("Formspree submission could not be completed.", error);
       }
     }
     updatePayment();
+    if (status) {
+      status.querySelector("[data-order-status-title]").textContent = sent ? "Order request sent" : "The raven lost its way";
+      status.querySelector("[data-order-status-copy]").textContent = sent
+        ? "Thank you. Your order request has been sent. Please complete payment through the secure Payhip checkout button below."
+        : "The order form could not send right now. Please try again, or contact Annuscha directly through the Correspondence page.";
+    }
     status?.classList.add("show");
     status?.focus();
   });
@@ -773,15 +709,16 @@ function formspreeForms() {
       event.preventDefault();
       if (status) status.textContent = "Sending...";
       try {
-        await fetch(form.action, {
+        const response = await fetch(form.action, {
           method: "POST",
           body: new FormData(form),
           headers: { Accept: "application/json" }
         });
-        if (status) status.textContent = "Sent. Thank you.";
+        if (!response.ok) throw new Error(`Formspree responded with ${response.status}`);
+        if (status) status.textContent = "Sent. Thank you. Your raven has reached the archive.";
         form.reset();
       } catch (error) {
-        if (status) status.textContent = "The form could not send from this preview. Please try again or email directly.";
+        if (status) status.textContent = "The raven could not fly today. Please try again or email directly.";
       }
     });
   });
@@ -795,10 +732,6 @@ function accountForm() {
     submit.disabled = !terms.checked;
   };
   terms.addEventListener("change", sync);
-  submit.addEventListener("click", () => {
-    setReaderPreviewSession();
-    redirectToReaderNext();
-  });
   sync();
 }
 
