@@ -1,12 +1,41 @@
 const colors = ["#56e7ff", "#75ffd8", "#bda4ff", "#ff8cca", "#fff2c7"];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const donationLink = "https://paypal.me/CherishedAngelArt";
-const formspreeEndpoint = "https://formspree.io/f/mlgzagbw";
-const payhipProducts = {
-  "Eclipse of Elysium": "PAYHIP_ELYSIUM_PRODUCT_KEY",
-  "Planet of Xyphara": "PAYHIP_XYPHARA_PRODUCT_KEY",
-  "What Remains of Me": "zXdEY",
-  audio: "PAYHIP_AUDIO_PRODUCT_KEY"
+const formspreeEndpoint = "https://formspree.io/f/xnjrngqq";
+const satchelStorageKey = "annuscha-reader-satchel";
+const satchelCatalog = {
+  elysium: {
+    id: "elysium",
+    title: "Eclipse of Elysium",
+    format: "PDF",
+    price: "Payhip link coming soon",
+    cover: "assets/Elysium pics/e-book cover Eclipse of Elysium 1 final.webp",
+    description: "Book I of Cycles of Shadow & Light. A dark fantasy romance of forbidden shadow magic, prophecy, and dangerous love.",
+    sample: "assets/Elysium pics/Eclipse of Elysium Sample.pdf",
+    payhip: ""
+  },
+  xyphara: {
+    id: "xyphara",
+    title: "Planet of Xyphara",
+    format: "PDF",
+    price: "Coming soon",
+    cover: "assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.webp",
+    description: "A bioluminescent world of butterfly beings, moth kingdoms, dangerous beauty, and secrets beneath the glow.",
+    sample: "book-xyphara.html#preview",
+    payhip: ""
+  },
+  remains: {
+    id: "remains",
+    title: "What Remains of Me",
+    format: "PDF",
+    price: "R45.00",
+    cover: "assets/What remains of me pics/E book cover What remains of me (1).webp",
+    description: "A dystopian dark romance where trauma awakens Echo powers and one girl refuses to become a weapon.",
+    sample: "assets/What remains of me pics/sample of What remains of me.pdf",
+    payhip: "https://payhip.com/b/zXdEY",
+    payhipProduct: "zXdEY",
+    payhipVariant: "1778471563630"
+  }
 };
 const socialLinks = {
   Facebook: "https://www.facebook.com/profile.php?id=61589214846274",
@@ -23,20 +52,6 @@ function readerAuthGuard() {
   // Auth0 protection is handled in auth.js. Keep visual/site behavior separate from login
   // so this static site never creates a fake localStorage authentication session.
   return false;
-}
-
-function readerSessionControls() {
-  const avatarBtn = document.getElementById("changeAvatarBtn");
-  const avatarInput = document.getElementById("avatarUpload");
-  const avatarImg = document.getElementById("readerAvatar");
-  if (avatarBtn && avatarInput && avatarImg) {
-    avatarBtn.addEventListener("click", () => avatarInput.click());
-    avatarInput.addEventListener("change", () => {
-      const file = avatarInput.files?.[0];
-      if (!file) return;
-      avatarImg.src = URL.createObjectURL(file);
-    });
-  }
 }
 
 function ensureSkipLink() {
@@ -319,7 +334,7 @@ function ravenAssistant() {
     { title: "Planet of Xyphara", type: "Book", keywords: ["xyphara", "planet", "butterfly", "moth", "bioluminescent", "fae", "lunaria", "lumen", "caelum", "lyra"], answer: "Planet of Xyphara is the bioluminescent butterfly and moth realm, full of glowing forests, wings, secrets, and dangerous beauty.", link: "book-xyphara.html", linkText: "Open Xyphara" },
     { title: "What Remains of Me", type: "Book", keywords: ["what remains", "remains", "echo", "company", "dystopian", "angel", "draven", "steve", "weapon", "trauma"], answer: "What Remains of Me is the dystopian Echo-power story where pain is used to awaken weapons, and Angel Reyes has other plans.", link: "book-remains.html", linkText: "Open What Remains of Me" },
     { title: "Samples and Preview Chapters", type: "Reading Help", keywords: ["sample", "preview", "chapter", "free", "read sample", "first chapter"], answer: "Samples and preview chapters are free glimpses only. They do not expose the full paid PDFs in the frontend.", link: "books.html", linkText: "Find Samples" },
-    { title: "Buy a Book", type: "Purchase Help", keywords: ["buy", "buy a book", "order", "purchase", "claim", "copy", "pdf", "pay", "payment", "paypal", "payhip"], answer: "Use the order form to claim a copy. Payment is handled through PayPal or Payhip, never through custom card fields on this website.", link: "order.html", linkText: "Claim Your Copy" },
+    { title: "Buy a Book", type: "Purchase Help", keywords: ["buy", "buy a book", "order", "purchase", "claim", "copy", "pdf", "pay", "payment", "paypal", "payhip"], answer: "Use Your Satchel to gather chosen books. Real checkout and digital delivery are handled securely through Payhip, never through custom card fields on this website.", link: "cart.html", linkText: "Open Your Satchel" },
     { title: "Audiobooks", type: "Purchase Help", keywords: ["audio", "audiobook", "audiobooks", "narration", "voice", "listen", "mp3"], answer: "Audiobooks are not available yet. If Audio appears on a form, treat it as a future-format placeholder until Annuscha announces otherwise.", link: "faq.html", linkText: "Read FAQ" },
     { title: "Characters Archive", type: "Characters", keywords: ["character", "characters", "profile", "bio", "power", "origin", "spoiler", "spoiler safe"], answer: "The character archive holds spoiler-safe profiles, worlds, powers, origins, and links to each character's page.", link: "characters.html", linkText: "Meet the Characters" },
     { title: "Elysia Nightshade", type: "Character", keywords: ["elysia", "nightshade", "shadowmancer", "blue hair", "blue magic", "light magic", "shadow magic"], answer: "Elysia Nightshade belongs to Eclipse of Elysium. She carries light magic touched by forbidden shadow and a destiny she refuses to let own her.", link: "character-elysia.html", linkText: "Open Elysia" },
@@ -332,7 +347,7 @@ function ravenAssistant() {
     { title: "Gallery", type: "Gallery", keywords: ["gallery", "art", "image", "images", "visual", "archive", "scenery", "creatures", "magic", "relics", "symbols", "fan art"], answer: "The gallery is CherishedAngel's visual archive for scenery, creatures, magic, relics, symbols, and future fan art portals.", link: "gallery.html", linkText: "Open Gallery" },
     { title: "FAQ", type: "FAQ", keywords: ["faq", "question", "questions", "warning", "warnings", "mature", "privacy", "account", "downloads", "refund", "ai art"], answer: "The FAQ answers story questions, purchase and download help, content warnings, privacy and accounts, and artwork or AI-process questions.", link: "faq.html", linkText: "Read FAQ" },
     { title: "Contact the Author", type: "Contact", keywords: ["contact", "email", "message", "press", "collaboration", "collab", "reader enquiry", "author", "raven"], answer: "For reader letters, press, collaborations, or questions that are not answered in the archive, send a raven through the contact page.", link: "contact.html", linkText: "Contact Annuscha" },
-    { title: "Reader Dashboard and Satchel", type: "Account", keywords: ["login", "sign in", "account", "reader", "satchel", "download", "downloads", "purchased", "purchase history", "missing download"], answer: "The reader dashboard and satchel are prepared for future secure purchase history and downloads. Missing download help should go through contact for now.", link: "user.html", linkText: "Open My Chronicle" },
+    { title: "Reader Dashboard and Satchel", type: "Account", keywords: ["login", "sign in", "account", "reader", "satchel", "download", "downloads", "purchased", "purchase history", "missing download"], answer: "Your reader dashboard shows your Auth0 profile. Your Satchel stores selected books on this device and sends real purchases through Payhip.", link: "cart.html", linkText: "Open Your Satchel" },
     { title: "Mature Content and Age Gate", type: "Safety", keywords: ["age", "age gate", "18", "adult", "mature", "content warning", "violence", "dark romance", "terms", "privacy"], answer: "This site is intended for adults and includes mature fantasy themes, violence, dark romance, and age-restricted content. Terms and privacy pages explain the rules.", link: "content-disclaimer.html", linkText: "Read Content Disclaimer" }
   ];
 
@@ -408,6 +423,9 @@ function activeNav() {
   document.querySelectorAll(".nav a").forEach((link) => {
     if (link.getAttribute("href") === page) link.classList.add("active");
   });
+  if (["characters.html", "gallery.html", "lore.html"].includes(page)) {
+    document.querySelectorAll(".nav-chronicles .nav-top").forEach((link) => link.classList.add("active"));
+  }
 }
 
 function enhanceNavMenus() {
@@ -426,25 +444,82 @@ function enhanceNavMenus() {
       ["Eclipse of Elysium", "book-elysium.html"],
       ["Planet of Xyphara", "book-xyphara.html"],
       ["What Remains of Me", "book-remains.html"],
-      ["Claim Your Copy", "order.html"]
-    ],
-    characters: [
-      ["Elysium Characters", "characters.html#elysium"],
-      ["Xyphara Characters", "characters.html#xyphara"],
-      ["What Remains Characters", "characters.html#remains"]
-    ],
-    gallery: [
-      ["Eclipse of Elysium", "gallery.html?world=elysium"],
-      ["Planet of Xyphara", "gallery.html?world=xyphara"],
-      ["What Remains of Me", "gallery.html?world=remains"]
+      ["Your Satchel", "cart.html"]
     ]
   };
+  const chroniclesMenu = [
+    {
+      label: "Characters",
+      href: "characters.html",
+      items: [
+        ["Elysium", "characters.html#elysium"],
+        ["What Remains", "characters.html#remains"],
+        ["Planet Xyphara", "characters.html#xyphara"]
+      ]
+    },
+    {
+      label: "Gallery",
+      href: "gallery.html",
+      items: [
+        ["Elysium", "gallery.html?world=elysium"],
+        ["What Remains", "gallery.html?world=remains"],
+        ["Planet Xyphara", "gallery.html?world=xyphara"]
+      ]
+    },
+    {
+      label: "Lore",
+      href: "lore.html",
+      items: [
+        ["World Lore", "lore.html#worlds-system"],
+        ["Map: What Remains", "map-wrm.html"],
+        ["Forbidden Records", "lore.html#forbidden-records"],
+        ["Archive", "lore.html#archive"]
+      ]
+    }
+  ];
 
   document.querySelectorAll(".nav").forEach((nav) => {
     if (nav.dataset.enhanced === "true") return;
     Array.from(nav.children).forEach((child) => {
       if (!(child instanceof HTMLAnchorElement)) return;
       const key = child.textContent.trim().toLowerCase();
+      if (key === "faq" || key === "lore" || key === "gallery") {
+        child.remove();
+        return;
+      }
+      if (key === "characters") {
+        const wrapper = document.createElement("div");
+        wrapper.className = "nav-item nav-chronicles";
+        const topLink = child.cloneNode(false);
+        topLink.href = "characters.html";
+        topLink.textContent = "The Chronicles";
+        topLink.classList.add("nav-top");
+        const dropdown = document.createElement("div");
+        dropdown.className = "dropdown chronicles-dropdown";
+        dropdown.setAttribute("aria-label", "The Chronicles submenu");
+        chroniclesMenu.forEach((group) => {
+          const subItem = document.createElement("section");
+          subItem.className = "dropdown-group";
+          const link = document.createElement("a");
+          link.href = group.href;
+          link.textContent = group.label;
+          link.className = "dropdown-group-title";
+          const subDropdown = document.createElement("div");
+          subDropdown.className = "dropdown-group-links";
+          subDropdown.setAttribute("aria-label", `${group.label} worlds`);
+          group.items.forEach(([label, href]) => {
+            const subLink = document.createElement("a");
+            subLink.href = href;
+            subLink.textContent = label;
+            subDropdown.appendChild(subLink);
+          });
+          subItem.append(link, subDropdown);
+          dropdown.appendChild(subItem);
+        });
+        wrapper.append(topLink, dropdown);
+        child.replaceWith(wrapper);
+        return;
+      }
       const items = menus[key];
       if (!items) return;
       const wrapper = document.createElement("div");
@@ -474,13 +549,108 @@ function enhanceNavMenus() {
   });
 }
 
-function polishGlobalChrome() {
-  document.querySelectorAll(".site-header a").forEach((link) => {
-    const label = link.textContent.trim().toLowerCase();
-    if (label === "cart" || label === "satchel") link.remove();
+function mobileNavigation() {
+  const mainLinks = [
+    ["Home", "index.html"],
+    ["Books", "books.html"],
+    ["Author", "author.html"],
+    ["Contact", "contact.html"],
+    ["Satchel", "cart.html"],
+    ["Sign In", "login.html"]
+  ];
+  const chronicleLinks = [
+    ["Characters", "characters.html"],
+    ["Gallery", "gallery.html"],
+    ["Lore", "lore.html"]
+  ];
+
+  document.querySelectorAll(".site-header").forEach((header, index) => {
+    if (header.querySelector(".mobile-menu-toggle")) return;
+    const menuId = `mobile-menu-${index}`;
+    const toggle = document.createElement("button");
+    toggle.className = "mobile-menu-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-label", "Open mobile navigation");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", menuId);
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+
+    const menu = document.createElement("nav");
+    menu.className = "mobile-menu";
+    menu.id = menuId;
+    menu.setAttribute("aria-label", "Mobile navigation");
+    menu.hidden = true;
+
+    const mainList = document.createElement("div");
+    mainList.className = "mobile-menu-links";
+    const chronicleButton = document.createElement("button");
+    chronicleButton.className = "mobile-more-toggle";
+    chronicleButton.type = "button";
+    chronicleButton.setAttribute("aria-expanded", "false");
+    chronicleButton.setAttribute("aria-controls", `${menuId}-chronicle`);
+    chronicleButton.textContent = "The Chronicle";
+
+    const chronicleList = document.createElement("div");
+    chronicleList.className = "mobile-more-links";
+    chronicleList.id = `${menuId}-chronicle`;
+    chronicleList.hidden = true;
+    chronicleList.setAttribute("aria-hidden", "true");
+    chronicleLinks.forEach(([label, href]) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      chronicleList.appendChild(link);
+    });
+
+    mainLinks.forEach(([label, href]) => {
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      if (label === "Sign In") link.classList.add("sign-in-glow");
+      if (label === "Satchel") {
+        link.classList.add("mobile-satchel-link");
+        link.innerHTML = '<span class="satchel-bag-icon" aria-hidden="true"></span>Your Satchel <span class="satchel-count" data-satchel-count>0</span>';
+      }
+      mainList.appendChild(link);
+      if (label === "Author") {
+        mainList.append(chronicleButton, chronicleList);
+      }
+    });
+
+    const setOpen = (open) => {
+      menu.hidden = !open;
+      header.classList.toggle("mobile-menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close mobile navigation" : "Open mobile navigation");
+      if (!open) {
+        chronicleList.classList.remove("is-open");
+        chronicleList.setAttribute("aria-hidden", "true");
+        chronicleButton.setAttribute("aria-expanded", "false");
+      }
+    };
+
+    toggle.addEventListener("click", () => setOpen(menu.hidden));
+    chronicleButton.addEventListener("click", () => {
+      const open = chronicleButton.getAttribute("aria-expanded") !== "true";
+      chronicleList.hidden = false;
+      chronicleList.classList.toggle("is-open", open);
+      chronicleList.setAttribute("aria-hidden", String(!open));
+      chronicleButton.setAttribute("aria-expanded", String(open));
+    });
+    menu.addEventListener("click", (event) => {
+      if (event.target instanceof HTMLAnchorElement) setOpen(false);
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !menu.hidden) setOpen(false);
+    });
+
+    menu.append(mainList);
+    header.append(toggle, menu);
   });
+}
+
+function polishGlobalChrome() {
   document.querySelectorAll('a[href="cart.html"]').forEach((link) => {
-    if (link.closest(".site-header")) link.remove();
     if (link.textContent.trim().toLowerCase() === "cart") link.textContent = "Satchel";
   });
   document.querySelectorAll(".footer").forEach((footer) => {
@@ -558,6 +728,173 @@ function footerColumn(title, links) {
   return column;
 }
 
+function readSatchel() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(satchelStorageKey) || "[]");
+    return Array.isArray(stored) ? stored.filter((id) => satchelCatalog[id]) : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function writeSatchel(items) {
+  localStorage.setItem(satchelStorageKey, JSON.stringify([...new Set(items)]));
+  updateSatchelCount();
+}
+
+function updateSatchelCount() {
+  const count = readSatchel().length;
+  document.querySelectorAll("[data-satchel-count]").forEach((node) => {
+    node.textContent = String(count);
+    node.hidden = count === 0;
+  });
+}
+
+function showSatchelToast(message) {
+  let toast = document.querySelector(".satchel-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.className = "satchel-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add("show");
+  window.clearTimeout(toast._hideTimer);
+  toast._hideTimer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function showPendingSatchelToast() {
+  try {
+    const message = sessionStorage.getItem("annuscha-satchel-toast");
+    if (!message) return;
+    sessionStorage.removeItem("annuscha-satchel-toast");
+    window.setTimeout(() => showSatchelToast(message), 160);
+  } catch (error) {
+    // Toasts are decorative; the Satchel content still renders if sessionStorage is blocked.
+  }
+}
+
+function ensureSatchelChrome() {
+  document.querySelectorAll(".site-header").forEach((header) => {
+    const actions = header.querySelector(".header-actions");
+    if (!actions || actions.querySelector("[data-satchel-link]")) return;
+    const link = document.createElement("a");
+    link.className = "tiny-link satchel-nav-link";
+    link.href = "cart.html";
+    link.setAttribute("aria-label", "Open Your Satchel");
+    link.title = "Your Satchel";
+    link.dataset.satchelLink = "true";
+    link.innerHTML = '<span class="satchel-bag-icon" aria-hidden="true"></span><span class="satchel-count" data-satchel-count>0</span>';
+    actions.prepend(link);
+  });
+  updateSatchelCount();
+}
+
+function satchelActions() {
+  document.querySelectorAll("[data-add-satchel]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.addSatchel;
+      const book = satchelCatalog[id];
+      if (!book) return;
+      const items = readSatchel();
+      const exists = items.includes(id);
+      if (!exists) writeSatchel([...items, id]);
+      const message = exists ? `${book.title} is already in your Satchel.` : `${book.title} was added to your Satchel.`;
+      showSatchelToast(message);
+      if (!/cart\.html$/i.test(window.location.pathname)) {
+        try {
+          sessionStorage.setItem("annuscha-satchel-toast", message);
+        } catch (error) {
+          // The redirect still works without this decorative confirmation.
+        }
+        window.setTimeout(() => {
+          window.location.href = "cart.html";
+        }, 520);
+      }
+    });
+  });
+}
+
+function renderSatchelPage() {
+  const root = document.querySelector("[data-satchel-page]");
+  if (!root) return;
+  const requestedBook = new URLSearchParams(window.location.search).get("book");
+  if (requestedBook && satchelCatalog[requestedBook] && !readSatchel().includes(requestedBook)) {
+    writeSatchel([...readSatchel(), requestedBook]);
+    window.history.replaceState({}, document.title, "cart.html");
+  }
+  const list = root.querySelector("[data-satchel-list]");
+  const empty = root.querySelector("[data-satchel-empty]");
+  const summaryCount = root.querySelector("[data-satchel-summary-count]");
+  const clearButton = root.querySelector("[data-clear-satchel]");
+  if (!list || !empty) return;
+
+  const checkoutButton = (book) => {
+    if (!book.payhip) {
+      return `<a class="btn disabled" aria-disabled="true" tabindex="-1">Payhip Link Coming Soon</a>`;
+    }
+    const variant = book.payhipVariant ? ` data-target-variant="${book.payhipVariant}"` : "";
+    const product = book.payhipProduct ? ` data-product="${book.payhipProduct}"` : "";
+    return `<a class="btn primary payhip-buy-button" href="${book.payhip}" data-theme="grey"${product}${variant}>Proceed to Secure Checkout</a>`;
+  };
+
+  const render = () => {
+    const items = readSatchel();
+    const emptyMessage = empty.querySelector("[data-satchel-empty-message]");
+    const emptyTitle = empty.querySelector("h3");
+    const emptyAction = empty.querySelector(".btn");
+    list.innerHTML = "";
+    empty.hidden = false;
+    empty.classList.toggle("satchel-continue-panel", items.length > 0);
+    if (emptyTitle) emptyTitle.hidden = items.length > 0;
+    if (emptyAction) emptyAction.hidden = items.length > 0;
+    if (emptyMessage) {
+      emptyMessage.hidden = items.length === 0;
+      emptyMessage.innerHTML = items.length === 0
+        ? ""
+        : '<a href="books.html">Explore more in the Veil Beyond</a>';
+    }
+    if (summaryCount) summaryCount.textContent = `${items.length} ${items.length === 1 ? "story" : "stories"} chosen`;
+    if (clearButton) clearButton.hidden = items.length === 0;
+
+    items.forEach((id) => {
+      const book = satchelCatalog[id];
+      const item = document.createElement("article");
+      item.className = "satchel-item";
+      item.innerHTML = `
+        <img src="${book.cover}" alt="${book.title} cover" loading="lazy" decoding="async">
+        <div>
+          <p class="eyebrow">${book.format}</p>
+          <h3>${book.title}</h3>
+          <p>${book.description}</p>
+          <div class="format-row"><span class="tag">${book.format}</span><span class="tag">${book.price}</span></div>
+        </div>
+        <div class="satchel-price">
+          <strong>${book.price}</strong>
+          ${checkoutButton(book)}
+          <button class="btn ghost" type="button" data-remove-satchel="${book.id}">Remove</button>
+        </div>
+      `;
+      list.appendChild(item);
+    });
+
+    list.querySelectorAll("[data-remove-satchel]").forEach((button) => {
+      button.addEventListener("click", () => {
+        writeSatchel(readSatchel().filter((id) => id !== button.dataset.removeSatchel));
+        render();
+      });
+    });
+  };
+
+  clearButton?.addEventListener("click", () => {
+    writeSatchel([]);
+    render();
+  });
+  render();
+}
+
 function contactTabs() {
   const tabs = document.querySelectorAll("[data-contact-tab]");
   const note = document.querySelector("[data-contact-note]");
@@ -619,100 +956,6 @@ function bookCarousel() {
   render();
 }
 
-function orderForm() {
-  const form = document.querySelector("[data-order-form]");
-  if (!form) return;
-  const status = document.querySelector("[data-order-status]");
-  const paymentLink = document.querySelector("[data-payment-link]");
-  const productButtons = document.querySelector("[data-product-payment-links]");
-  const params = new URLSearchParams(location.search);
-  const bookMap = {
-    elysium: "Eclipse of Elysium",
-    xyphara: "Planet of Xyphara",
-    remains: "What Remains of Me"
-  };
-  const requestedBook = bookMap[params.get("book")] || params.get("book");
-  const requestedFormat = params.get("format");
-  if (requestedBook) {
-    const select = form.querySelector('[name="book"]');
-    if (select && Array.from(select.options).some((option) => option.value === requestedBook || option.textContent === requestedBook)) {
-      select.value = requestedBook;
-    }
-  }
-  if (requestedFormat) {
-    const checkbox = form.querySelector(`[name="product"][value="${requestedFormat}"]`);
-    if (checkbox) checkbox.checked = true;
-  }
-  const updatePayment = () => {
-    const book = form.querySelector('[name="book"]')?.value || "Eclipse of Elysium";
-    const wantsAudio = form.querySelector('[name="product"][value="audio"]')?.checked;
-      const productKey = wantsAudio ? payhipProducts.audio : payhipProducts[book] || payhipProducts["What Remains of Me"];
-    const isPlaceholder = productKey.startsWith("PAYHIP_");
-    if (paymentLink) {
-      paymentLink.href = isPlaceholder ? "contact.html" : `https://payhip.com/b/${productKey}`;
-      paymentLink.textContent = isPlaceholder ? "Ask for Payhip Link" : "Complete Payhip Checkout";
-      paymentLink.classList.toggle("payhip-buy-button", !isPlaceholder);
-      if (isPlaceholder) {
-        delete paymentLink.dataset.product;
-        delete paymentLink.dataset.targetVariant;
-      } else {
-        paymentLink.dataset.product = productKey;
-        if (productKey === "zXdEY") paymentLink.dataset.targetVariant = "1778471563630";
-      }
-    }
-    if (productButtons) {
-      const buttons = Object.entries(payhipProducts)
-        .filter(([name]) => name !== "audio")
-        .map(([name, key]) => {
-          const placeholder = key.startsWith("PAYHIP_");
-          if (placeholder) return `<a class="btn ghost" href="contact.html">${name}</a>`;
-          const variant = key === "zXdEY" ? ' data-target-variant="1778471563630"' : "";
-          return `<a class="btn ghost payhip-buy-button" href="https://payhip.com/b/${key}" data-theme="grey" data-product="${key}"${variant}>${name}</a>`;
-        }).join("");
-      productButtons.innerHTML = `
-        ${buttons}
-        <a class="btn ghost" href="${donationLink}" target="_blank" rel="noopener">Donate</a>
-      `;
-    }
-  };
-  form.addEventListener("change", updatePayment);
-  updatePayment();
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    let sent = true;
-    if (form.action && form.action.includes("formspree.io")) {
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
-        });
-        if (!response.ok) throw new Error(`Formspree responded with ${response.status}`);
-      } catch (error) {
-        sent = false;
-        console.warn("Formspree submission could not be completed.", error);
-      }
-    }
-    updatePayment();
-    if (status) {
-      const canCheckout = sent && paymentLink && paymentLink.href && !paymentLink.href.endsWith("contact.html");
-      status.querySelector("[data-order-status-title]").textContent = sent ? "Order request sent" : "The raven lost its way";
-      status.querySelector("[data-order-status-copy]").textContent = sent
-        ? (canCheckout
-            ? "Thank you. Your order request has been sent. Opening secure Payhip checkout now."
-            : "Thank you. Your order request has been sent. This title does not have a public Payhip checkout link yet, so please use the contact option below.")
-        : "The order form could not send right now. Please try again, or contact Annuscha directly through the Correspondence page.";
-      if (canCheckout) {
-        window.setTimeout(() => {
-          window.location.href = paymentLink.href;
-        }, 650);
-      }
-    }
-    status?.classList.add("show");
-    status?.focus();
-  });
-}
-
 function formspreeForms() {
   document.querySelectorAll("[data-formspree-form]").forEach((form) => {
     const status = form.querySelector("[data-form-status]");
@@ -733,17 +976,6 @@ function formspreeForms() {
       }
     });
   });
-}
-
-function accountForm() {
-  const terms = document.querySelector("[data-accept-terms]");
-  const submit = document.querySelector("[data-create-account]");
-  if (!terms || !submit) return;
-  const sync = () => {
-    submit.disabled = !terms.checked;
-  };
-  terms.addEventListener("change", sync);
-  sync();
 }
 
 const galleryWorlds = {
@@ -900,22 +1132,10 @@ const galleryWorlds = {
         ]
       },
       {
-        "title": "Magic of Xyphara",
-        "type": "Magic",
-        "image": "assets/Planet of Xyphara/relics and symbols/FLyw9EbLgZc9eP3lHwd1--1--gzlh6.webp",
-        "text": "Time, visions, wings of light, glowing power, and magic rooted deep within the planet.",
-        "images": [
-          "assets/Planet of Xyphara/relics and symbols/boat for travel.webp",
-          "assets/Planet of Xyphara/relics and symbols/cactus flower planet Xyphara.webp",
-          "assets/Planet of Xyphara/relics and symbols/caelum and lunaria.webp",
-          "assets/Planet of Xyphara/relics and symbols/flower on planet Xyphara.webp"
-        ]
-      },
-      {
-        "title": "Relics of Xyphara",
-        "type": "Relics / Symbols",
+        "title": "Extras of Xyphara",
+        "type": "Extras",
         "image": "assets/Planet of Xyphara/relics and symbols/icon of world tree.webp",
-        "text": "World-tree marks, wing sigils, travel vessels, cactus blooms, and symbols that glow before the truth does.",
+        "text": "World-tree marks, wing sigils, travel vessels, cactus blooms, and strange glowing details from the planet.",
         "images": [
           "assets/Planet of Xyphara/relics and symbols/boat for travel.webp",
           "assets/Planet of Xyphara/relics and symbols/cactus flower planet Xyphara.webp",
@@ -1185,6 +1405,222 @@ function spoilerSafeCharacters() {
   apply();
 }
 
+const lorePostBodies = {
+  shadowWar: `
+    <p>Archived within the forbidden records of the Living Chronicle.</p>
+    <p>There was a time when Elysium did not fear the dark. Before the Golden Order rose from ash and holy fire, before shadow magic became a crime punishable by death, the realm existed in balance. Light and darkness were opposing halves of the same living force: creation and destruction, truth and illusion, life and death.</p>
+    <p>That balance was protected by thirteen mages known as the Circle of Twilight. Seven wielded radiant arts of healing, protection, growth, and celestial flame. Six mastered shadowcraft, spirit binding, dream-walking, necromancy, and sacred communion between death and rebirth.</p>
+    <p>Among them stood Lyralei Nightfall, the last true Shadowmancer. To some she was a guardian of balance. To others, a living omen.</p>
+    <h4>The Ebonlight</h4>
+    <p>The Ebonlight was a First Age relic created to bridge light, shadow, spirit, flame, life, and death. When the Circle fractured, Lyralei shattered the Ebonlight and hid its fragments across the realm before any single ruler could claim its power.</p>
+    <h4>Elguard Evernight and the Golden Order</h4>
+    <p>Elguard Evernight believed darkness corrupted everything it touched. He viewed balance as weakness, and he found someone grieving enough to manipulate: Rafahell Darkin, Lyralei's young dragon-blood apprentice.</p>
+    <h4>The Great Sundering</h4>
+    <p>Rafahell revealed the Circle's vulnerability: the Solstice Ritual. The attack came at midnight. Light-touched zealots descended while the thirteen mages were linked and defenseless. Holy fire consumed sanctuaries, spirits were severed, and the Whispering Wood was reduced to blackened ash.</p>
+    <h4>The Shadowmancer Prophecy</h4>
+    <blockquote>When the Radiant Heart finds its shadow twin, when opposites embrace in flesh and spirit, the Upbringer will awaken. Neither light nor dark but both, born of the ancient lines thought purged, carrier of balance to a world grown rigid in false purity.</blockquote>
+    <p>For centuries, the Golden Order hunted every bloodline touched by shadow affinity. The Order called it purification. The survivors called it genocide.</p>
+    <h4>The Dragon Wars and the False Golden Age</h4>
+    <p>When the purges spread, the dragons rose beneath Kryzareth the Eternal Night. For three years, skies burned. The dragons lost and vanished into myth. Elguard declared the Golden Age, but without shadow, truth distorted; without darkness, light grew blinding. Balance cannot be destroyed forever. Only buried.</p>
+  `,
+  echoStages: `
+    <p>Restricted Company Archive. Unauthorized distribution punishable by execution.</p>
+    <p>For decades, humanity believed Echo manifestations were random miracles. They were wrong. An Echo is not a gift. It is pressure given consciousness: a fracture inside the human soul forced open through suffering, obsession, desperation, or purpose.</p>
+    <h4>What Is an Echo?</h4>
+    <p>An Echo is triggered when an individual reaches collapse while harboring an overwhelming internal drive. The Company calls this the Core Resonance Drive. The desperate, broken, obsessed, devoted, and surviving often manifest the strongest Echoes.</p>
+    <h4>The Awakening Process</h4>
+    <p>Echo candidates undergo weapons drills, combat training, survival conditioning, psychological stress testing, sleep deprivation, controlled starvation, isolation exposure, fear inducement, simulated executions, and pain resistance trials. The purpose is simple: break the candidate apart until something inside refuses to die.</p>
+    <h4>Stage I - Fracture</h4>
+    <p>Candidates experience heightened emotions, hallucinations, aggression, sensory distortion, and involuntary energy surges. The Company calls them Cracking Subjects.</p>
+    <h4>Stage II - Manifestation</h4>
+    <p>The Echo partially materializes. Abilities burst through during stress or emotional overload. Memory, emotional regulation, and physical restraint often fail. Subjects are either weaponized or terminated.</p>
+    <h4>Stage III - Resonance</h4>
+    <p>The user synchronizes with their Echo. Abilities become stable enough for tactical deployment, conscious activation, and combat operations.</p>
+    <h4>Stage IV - Ascension</h4>
+    <p>Rare and dangerous. Ascended users no longer merely control their Echo; they become extensions of it. The Company officially denies Stage IV exists. Internal records suggest otherwise.</p>
+  `,
+  dangerousEchoes: `
+    <p>The Company ranks Echo types by containment risk, tactical usefulness, and probability of human identity collapse.</p>
+    <h4>1. Shapeshifting Echo</h4><p><strong>Threat Level: Catastrophic.</strong> Users alter muscle density, bone structure, facial features, and entire biological forms. Side effects include identity deterioration, violent instincts, and emotional instability.</p>
+    <h4>2. Mind Manipulation Echo</h4><p><strong>Threat Level: Omega.</strong> Users alter perception, emotion, memory, loyalty, and sensory experience. Victims often never realize they were manipulated.</p>
+    <h4>3. Shadowform Transformation Echo</h4><p><strong>Threat Level: Omega.</strong> The body partially converts into smoke-like shadow matter, allowing operatives to phase, disappear into darkness, evade physical attacks, and infiltrate secured locations.</p>
+    <h4>4. Flame Echo</h4><p><strong>Threat Level: Severe.</strong> Echo flames respond directly to emotional state. Anger increases heat, fear destabilizes control, and hatred creates the deadliest burns.</p>
+    <h4>5. Devotion Echo</h4><p><strong>Threat Level: Unknown.</strong> This rare Echo responds through conviction, not domination. Subjects perceive the user's beliefs as undeniable truth and believe they act willingly. Advanced manifestations create cerulean lightning-like energy surges.</p>
+    <h4>6. Kinetic Rupture Echo</h4><p><strong>Threat Level: Severe.</strong> The user stores force within the body and releases it explosively. Simple movements become lethal, but overuse can destroy the user's skeletal structure.</p>
+    <h4>7. Fear Echo</h4><p><strong>Threat Level: Extreme.</strong> This Echo weaponizes terror through paralysis, hallucinations, panic attacks, sensory collapse, and induced trauma responses.</p>
+    <p>The Company's greatest secret is not that Echoes exist. It is that suffering strengthens them.</p>
+  `,
+  emptyCoffin: `
+    <div class="warning-seal">WARNING: This record contains restricted psychological fragments recovered from Company archives.</div>
+    <p><strong>Forbidden Record 07 - The Empty Coffin</strong></p>
+    <p><strong>Classification:</strong> Restricted. <strong>Source:</strong> Unstable memory fragment recovered from unauthorized Echo resonance. <strong>Status:</strong> Deleted timeline / psychological archive fragment.</p>
+    <p>There was a version of the story where Draven was the monster from the very beginning. Before the records were rewritten, before The Company buried the truth beneath manipulated reports, there existed another sequence of events. One Angel still remembers in fragments.</p>
+    <h4>The Original Awakening Attempt</h4>
+    <p>In the earliest archived timeline, there was no Steve. Only Draven, and the thing living beneath his skin. The Company tried weapons drills, isolation, sleep deprivation, controlled starvation, punishment, and simulated executions. Nothing worked.</p>
+    <h4>The Shapeshifter</h4>
+    <p>Draven's predator-class Shapeshifting Echo was ideal for stealth, infiltration, psychological terror, and close-range elimination. The transformation was not clean: bones snapped, muscles stretched, and flesh folded into shadow-like distortion.</p>
+    <h4>Shock Her Awake</h4>
+    <p>Recovered audio transcripts contained only four words: Shock her awake permanently. Draven was ordered to hunt Angel through the abandoned training sector after curfew, with no restraints and no safety override.</p>
+    <h4>The Moment Everything Broke</h4>
+    <p>Draven caught her in his original form: human, terrified, desperate, and bleeding from Echo overexertion. He tried to explain that The Company had forced him into the operation because Angel was marked for disposal. The explanation came too late.</p>
+    <h4>The Empty Coffin</h4>
+    <p>The Company buried her within forty-eight hours. Internal notes recorded Echo activity long after biological shutdown. The coffin was later discovered empty: no broken locks, no disturbed soil, only scorch marks and cerulean residue burned into the lining. One note remained: The girl in the coffin opened her eyes.</p>
+  `,
+  cainMonster: `
+    <p>There are stories the Golden Order burned from history. Stories whispered only in outcast camps and dying fires beneath the wilderness of Elysium. This is one of them: the story of how Cain Brisha stopped being a boy and became something far more dangerous.</p>
+    <h4>The Blood Hunt</h4>
+    <p>Among the Beastmen clans, coming of age was earned through survival. Every young warrior was sent alone into the wilds to complete the Blood Hunt: no forged weapons, no companions, no protection. Cain tracked an ancient Direhorn predator through the black forests near the western cliffs for nearly two days without sleep.</p>
+    <p>The beast nearly killed him. Cain returned the favor. Torn open by claws and carrying a Direhorn trophy across his shoulders, he remembered thinking how proud his village would be. How proud Shade Crimson would be.</p>
+    <h4>The Village in Ash</h4>
+    <p>He never reached home. Smoke came first, then blood, burned fur, and the silence of slaughter. Homes were skeletal frames. Bodies lay in mud gone red. Golden Order banners stood among the flames like holy monuments.</p>
+    <p>Near the river, one burned survivor gripped Cain's wrist and whispered the words that ended the boy he had been: The Order. They took Shade.</p>
+    <h4>The Last Fang</h4>
+    <p>Something inside Cain broke open primitively. His heartbeat slowed. His vision sharpened. Every scent became painfully clear. Less than a mile from the village, five Order riders learned that something monstrous was hunting them back.</p>
+    <p>For three days, patrols vanished through the western forests. Scouts disappeared without sound. Some soldiers were found hanging from trees. Others were never found at all. Cain no longer fought like a warrior. He fought like grief given claws.</p>
+    <p>The Golden Order named him a feral shadow-corrupted Beastman responsible for holy soldiers' deaths. The surviving outcasts called him the Last Fang, because monsters are not born. They are created.</p>
+  `,
+  beastmenExiled: `
+    <p>The Golden Order teaches that Beastmen are savage creatures corrupted by shadow. That is the official history. It is also a lie.</p>
+    <p>Long before Elguard Evernight and the Light Dominion, Beastmen lived across the western forests, southern canyon territories, and mountain wilds. They were hunters, guardians, spirit-walkers, and keepers of wilderness magic older than the Golden Order itself.</p>
+    <h4>The Nature of Beastmen</h4>
+    <p>Their magic came from instinct, moonlight, blood, shadow, and the wilderness. Some bloodlines carried heightened senses, spirit tracking, transformation magic, night vision, shadow camouflage, and rare shapeshifting gifts. To the ancient world, those gifts were part of balance. To Elguard, they were unacceptable.</p>
+    <h4>The Shadow-Blood Decree</h4>
+    <p>Less than twenty years after the Golden Order seized power, the Shadow-Blood Decree classified races with shadow affinity as spiritually impure. Beastmen, shadow practitioners, spirit callers, dream-walkers, dragon-blood lines, and lunar wilderness tribes became legal targets.</p>
+    <h4>The Purges</h4>
+    <p>The first campaigns were not wars. They were exterminations. Villages were burned during the night, sacred groves destroyed, and captured Beastmen faced execution, forced labor, or experimentation beneath Order prisons. Children with strong shadow affinity disappeared before adulthood.</p>
+    <h4>Why Beastmen Became Feared</h4>
+    <p>The Order taught citizens that Beastmen consumed human flesh, shapeshifters could not love, and shadow magic corrupted the soul. Fear became propaganda. Propaganda became law. Law became history.</p>
+    <h4>The Truth Buried</h4>
+    <p>Shadow was never the enemy. Balance was. Balance could not be controlled, and races like the Beastmen proved that darkness was not inherently evil. Only free.</p>
+  `,
+  xypharaInspired: `
+    <p>Before Elysium, before shadow wars and forbidden magic, there was Xyphara. Planet of Xyphara was the first fantasy world I created as a teenager, full of glowing forests, butterfly kingdoms, moth clans, magical creatures, ancient prophecies, and impossible color.</p>
+    <h4>Why Xyphara Returned</h4>
+    <p>I returned to Xyphara because of my children. My eldest daughters love creating stories, but they sometimes stop because they fear the story is not good enough. Hearing that reminded me of the exact fear I carried as a teenager, and suddenly my unfinished world was waiting again.</p>
+    <h4>Growing Up Homeschooled</h4>
+    <p>A lot of Xyphara was inspired by loneliness. I was homeschooled, and although my parents gave me opportunities through youth groups, gymnastics, aikido, art classes, and gatherings, I often felt socially awkward and disconnected. Fantasy worlds became companions long before I understood how to create friendships in real life.</p>
+    <h4>The Heart of Xyphara</h4>
+    <p>At its core, Xyphara is about friendship, identity, feeling different, learning self-worth, and finding people who truly see you. Lunaria, Lumen, Talos, and the divided world itself all carry that longing to belong somewhere.</p>
+    <h4>Returning to an Old Dream</h4>
+    <p>Coming back to Xyphara as an adult felt like reopening a forgotten door and finding a younger version of myself waiting with unfinished dreams. I no longer write because I need perfection. I write because stories matter.</p>
+  `,
+  elysiumFirstLines: `
+    <p>Before Elysia understood prophecy, before the Shadow War awakened again, before she became the name whispered in forbidden records, there was only fear.</p>
+    <p>This was one of the earliest opening versions ever written for Shadows of Elysium: a darker, rawer introduction to Elysia's awakening before the story evolved into its current form.</p>
+    <h4>Chapter 1 - The Awakening</h4>
+    <p>Elysia shakes as her visions take control, turning dreams into nightmares. She tosses on the orphanage's straw mattress, sweat gleaming beneath the twin moons' crimson light. Faces of loved ones she has never seen but somehow knows flash behind her eyes. The metallic taste of blood fills her mouth.</p>
+    <p>Reality fractures like broken glass. She sees an eclipse that should not exist, three celestial bodies aligned in impossible geometry. Something ancient emerges from the fabric of time itself, and her bones ache with recognition she cannot explain.</p>
+    <p>Then Fennora's voice cuts through the dark like a rusted blade. The old elf drags Elysia from the mattress, spitting about witchcraft, forbidden dark magic, and the Order's failed soldier. Cold stone scrapes her bare feet raw.</p>
+    <p>Light gathers in Fennora's palms, meant to end Elysia's life. Fear and confusion crash through her. Maybe she was born cursed. Maybe she does not deserve to live.</p>
+    <p>But another vision clouds her sight: destiny tasting of copper and starlight, a place where her darkness would be understood instead of feared. Just as Fennora prepares the final spell, shadow tendrils emanate from Elysia's body.</p>
+  `,
+  worldsOfAnnuscha: `
+    <p>Every fantasy world begins somewhere: with a forgotten dream, loneliness, a nightmare, or a single question that refuses to leave. For me, every world still carries a piece of me inside it.</p>
+    <h4>What Remains of Me - Born From a Nightmare</h4>
+    <p>The idea came from a vivid dream that stayed with me like a scar. The fear was personal, suffocating, tragic, and beautiful. That dream became The Company, Echo awakenings, psychological manipulation, survival, identity, Draven, and Angel.</p>
+    <h4>Eclipse of Elysium - From AI Roleplay to Story</h4>
+    <p>Eclipse of Elysium began unexpectedly as an AI bot I created on FlowGPT. The world grew through roleplay, the lore deepened, and eventually I realized it was not only a roleplay world anymore. It was a real story large enough to become a series.</p>
+    <h4>Planet of Xyphara - The Story I Could Never Let Go</h4>
+    <p>Xyphara is the oldest world I created. I abandoned it because I believed it was not good enough, then returned to it years later to show my children that creative dreams still matter, even when they take years to finish.</p>
+    <h4>The Color Blue</h4>
+    <p>Blue connects every world I create: forbidden magic in Elysium, cerulean Echo energy in What Remains of Me, and bioluminescent life in Xyphara. It became a thread woven quietly through every universe.</p>
+  `,
+  buildingXyphara: `
+    <p>Every fantasy world starts with fragments: a color, a fear, a creature, a place that keeps staring back from the dark. For Xyphara, it began with butterflies. And oddly enough, grasshoppers.</p>
+    <h4>Where Xyphara Truly Began</h4>
+    <p>As a teenager, I loved fantasy creatures, fairies, butterflies, glowing magic, and ethereal worlds. Butterflies became the foundation for Morphic butterflies, moth clans, the glowing forests of Entymora, and Xyphara's dreamlike atmosphere.</p>
+    <h4>The Creepers</h4>
+    <p>I have always been strangely terrified of grasshoppers. Fear is useful in worldbuilding. Exaggerated enough, it becomes visually interesting. That fear inspired the Creepers: invasive, twitching, swarming creatures born from discomfort.</p>
+    <h4>Why Xyphara Glows</h4>
+    <p>Xyphara had to feel alive. Bioluminescent plants, luminous rivers, radiant wings, shimmering forests, magical skies, and iridescent magic became its identity because iridescence is all colors at once.</p>
+    <h4>Beauty and Horror Together</h4>
+    <p>Xyphara is beautiful, but beneath the glowing forests and fairy-like races live war, corruption, manipulation, grief, monsters, and ancient hunger. The prettier the world becomes, the more terrifying its darkness feels.</p>
+  `,
+  elysiaDesign: `
+    <p>Character creation is strange. Some characters arrive fully formed. Others evolve slowly until they finally become who they were always supposed to be. Elysia Nightshade was the second kind.</p>
+    <h4>The Original Elysia</h4>
+    <p>The earliest Elysia concepts were softer: butterflies in her hair, gentle expressions, lighter fantasy clothing, glowing blue magic, and innocent ethereal energy. She represented wonder more than conflict.</p>
+    <h4>When the Story Became Darker</h4>
+    <p>As Eclipse of Elysium evolved into a story about trauma, destiny, forbidden power, corruption, identity, and morally gray choices, Elysia had to change. She needed to feel powerful but exhausted, beautiful but haunted, not perfect but surviving.</p>
+    <h4>The Hair Stripes</h4>
+    <p>The white and black streaks in Elysia's azure hair became symbolic. Not corruption. Not purity. Balance. Light changed her. Shadow changed her. Now both live within her simultaneously.</p>
+    <h4>Using AI During the Design Process</h4>
+    <p>I use AI tools for inspiration, moodboards, atmosphere, concept exploration, composition ideas, and character experimentation. The emotional core, story, personality, symbolism, and evolution come from me; AI helps visualize ideas already alive in my imagination.</p>
+    <h4>Why Character Design Matters</h4>
+    <p>Fantasy characters become memorable when they feel emotionally real beneath the magic. Readers may remember glowing eyes or beautiful armor, but what they connect to is pain, longing, fear, hope, and history.</p>
+  `,
+  howEchoAwakenings: `
+    <p>Echo awakenings are not gentle transformations. They happen when the mind is pushed beyond ordinary survival and something inside refuses to remain human, silent, or powerless.</p>
+    <h4>How Echo Awakenings Work</h4>
+    <p>The Company calls the trigger a soul rupture: a moment of extreme emotional pressure where trauma, obsession, devotion, or desperation becomes strong enough to manifest as power. The stronger the need, the more dangerous the awakening.</p>
+    <p>Forced awakenings remain the only repeatable method The Company has documented, which is why their training abandoned ethics long ago. The process is not meant to teach candidates. It is meant to break them until the Echo answers.</p>
+    <h4>The Cost</h4>
+    <p>Overuse erodes emotional stability. Candidates may experience hallucinations, blackened veins, memory distortion, sensory collapse, or Soulburn. The Echo can save a person, but it can also hollow them out.</p>
+  `,
+  blueLightShadowEcho: `
+    <p>Blue light appears across Annuscha Botes' worlds as power, sorrow, memory, awakening, and transformation. In Elysium it touches forbidden magic. In What Remains of Me it becomes cerulean Echo energy. In Xyphara it glows through the world itself.</p>
+    <h4>Blue Light</h4>
+    <p>Blue is not purity. It is threshold energy: the color of something waking up, changing form, or becoming too powerful to remain hidden.</p>
+    <h4>Shadow and Echo</h4>
+    <p>Shadow magic and Echo power are different systems, but both ask the same question: what happens when pain becomes force? The answer is rarely clean, and never free.</p>
+  `,
+  fallenTerritories: `
+    <p>The Fallen Territories are regions where old borders no longer matter. Cities are broken, supply routes shift without warning, and survivors trade maps like contraband.</p>
+    <h4>Restricted Geography</h4>
+    <p>Some regions belong to no government, only to hunger, ruin, Company patrols, and stories no one can verify twice. Travel records are incomplete because many scouts never return.</p>
+  `,
+  interactiveMap: `
+    <p>The What Remains of Me interactive map opens the dystopian city as a navigable archive. Readers can pan, zoom, and click restricted locations for future lore records.</p>
+    <p><a class="btn primary" href="map-wrm.html">Open the Interactive Map</a></p>
+  `,
+  dystopianCityMap: `
+    <p>The dystopian city map records old residential districts, broken transit routes, sealed Company corridors, and zones where Echo activity still lingers after failed experiments.</p>
+    <h4>City Notes</h4>
+    <p>Some streets are physically safe but psychologically dangerous. Others are quiet only because everything living already learned not to make sound there.</p>
+  `,
+  travelWarnings: `
+    <p>Travel warnings are issued for readers entering unstable archive zones: abandoned districts, corrupted forests, sealed facilities, and lands where the map may be older than the danger.</p>
+    <h4>Archive Notice</h4>
+    <p>Never trust a safe road twice. In Annuscha Botes' worlds, geography remembers what happened there.</p>
+  `,
+  creatureZones: `
+    <p>Creature zones mark regions where beasts, altered wildlife, dragon remnants, Creepers, or Echo-mutated threats have been reported.</p>
+    <h4>Survival Note</h4>
+    <p>Creature sightings are not always literal. Some are folklore, some are propaganda, and some are warnings from people who barely escaped.</p>
+  `
+};
+
+const lorePostMeta = {
+  dangerousEchoes: { key: "dangerousEchoes", category: "Magic Systems", title: "Top 7 Most Dangerous Echo Powers", image: "assets/Background/lore back.webp" },
+  echoStages: { key: "echoStages", category: "Magic Systems", title: "Echo Stages Explained: How Echo Awakenings Really Work", image: "assets/Elysium pics/magic/yin yang background.webp" },
+  howEchoAwakenings: { key: "howEchoAwakenings", category: "Magic Systems", title: "How Echo Awakenings Work", image: "assets/What remains of me pics/magic/Echo awaken inside Angel.webp" },
+  blueLightShadowEcho: { key: "blueLightShadowEcho", category: "Magic Systems", title: "Blue Light, Shadow, and Echo", image: "assets/Elysium pics/Elysia with her magic.jpg" },
+  fallenTerritories: { key: "fallenTerritories", category: "Maps & Geography", title: "The Fallen Territories", image: "assets/What remains of me pics/scenery/the remains of what cities look like.webp" },
+  interactiveMap: { key: "interactiveMap", category: "Maps & Geography", title: "What Remains of Me Interactive Map", image: "assets/blog lore/what remains of me/dystopian city of remains of me.png" },
+  dystopianCityMap: { key: "dystopianCityMap", category: "Maps & Geography", title: "Dystopian City Map Posts", image: "assets/blog lore/what remains of me/dystopian city of remains of me.png" },
+  travelWarnings: { key: "travelWarnings", category: "Maps & Geography", title: "Travel Warnings", image: "assets/Elysium pics/scenery/Elysium landscape.webp" },
+  creatureZones: { key: "creatureZones", category: "Maps & Geography", title: "Creature Zones", image: "assets/Elysium pics/creatures/Dragon.webp" },
+  beastmenExiled: { key: "beastmenExiled", category: "Lands & Bloodlines", title: "Why Beastmen Were Exiled", image: "assets/Elysium pics/characters/Cain/Beastman Cain.webp" },
+  emptyCoffin: { key: "emptyCoffin", category: "Forbidden Records", title: "Forbidden Record 07: The Empty Coffin", image: "assets/Background/black_and_white_eclipse_background.webp" },
+  elysiumFirstLines: { key: "elysiumFirstLines", category: "Deleted Scenes", title: "First Lines of Shadows of Elysium", image: "assets/ideas/Chapter 1 Eclipse.webp" },
+  shadowWar: { key: "shadowWar", category: "World Lore", title: "The Shadow War: How Elysium Lost Its Balance", image: "assets/Elysium pics/scenery/Elysium.webp" },
+  cainMonster: { key: "cainMonster", category: "Character Secrets", title: "The Night Cain Became a Monster", image: "assets/Elysium pics/characters/Cain/Beastman Cain.webp" },
+  xypharaInspired: { key: "xypharaInspired", category: "From the Author's Desk", title: "What Inspired Planet of Xyphara", image: "assets/Planet of Xyphara/scenery/planet Xyphara landscape.webp" },
+  worldsOfAnnuscha: { key: "worldsOfAnnuscha", category: "Behind the Book", title: "The Worlds of Annuscha Botes", image: "assets/Background/lore back.webp" },
+  buildingXyphara: { key: "buildingXyphara", category: "Worldbuilding", title: "Building Xyphara From Scratch", image: "assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.webp" },
+  elysiaDesign: { key: "elysiaDesign", category: "Cover Art & AI Art Process", title: "How I Designed Elysia Nightshade", image: "assets/Elysium pics/Elysia with her magic.jpg" }
+};
+
+const lorePostGroups = {
+  magic: ["echoStages", "howEchoAwakenings", "dangerousEchoes", "blueLightShadowEcho"],
+  maps: ["fallenTerritories", "interactiveMap", "dystopianCityMap", "travelWarnings", "creatureZones"],
+  lands: ["beastmenExiled"],
+  forbidden: ["emptyCoffin", "elysiumFirstLines"],
+  characterSecrets: ["cainMonster"],
+  authorDesk: ["xypharaInspired", "worldsOfAnnuscha", "buildingXyphara", "elysiaDesign"],
+  worldLore: ["shadowWar"]
+};
+
 function loreArchive() {
   const cards = Array.from(document.querySelectorAll("[data-lore-card]"));
   if (!cards.length) return;
@@ -1193,6 +1629,7 @@ function loreArchive() {
   modal.setAttribute("role", "dialog");
   modal.setAttribute("aria-modal", "true");
   document.body.appendChild(modal);
+  let activeEntries = [];
   let activeIndex = 0;
 
   const close = () => {
@@ -1200,40 +1637,68 @@ function loreArchive() {
     modal.innerHTML = "";
   };
 
+  const entryFromCard = (card) => ({
+    key: card.dataset.loreKey || "",
+    category: card.dataset.category || "Lore Record",
+    title: card.dataset.title || "Lore Record",
+    image: card.dataset.image || card.querySelector("img")?.src || "",
+    body: card.dataset.body || ""
+  });
+
+  const groupForKey = (key) => Object.values(lorePostGroups).find((group) => group.includes(key));
+  const entriesFromGroup = (groupKey) => (lorePostGroups[groupKey] || [])
+    .map((key) => lorePostMeta[key])
+    .filter(Boolean);
+
   const render = () => {
-    const card = cards[activeIndex];
+    const entry = activeEntries[activeIndex] || activeEntries[0];
+    const body = lorePostBodies[entry.key] || `<p class="lead">${entry.body || "This lore entry will open into a deeper article when the archive is connected."}</p>`;
+    const hasRelatedPosts = activeEntries.length > 1;
     modal.innerHTML = `
       <div class="lore-modal-card">
         <button class="btn ghost close-modal" type="button" data-lore-close>Close</button>
         <div class="lore-modal-grid">
-          <img src="${card.dataset.image || card.querySelector("img")?.src || ""}" alt="${card.dataset.title || "Lore record"}">
+          <img src="${entry.image || ""}" alt="${entry.title || "Lore record"}">
           <div class="lore-modal-body">
-            <p class="eyebrow">${card.dataset.category || "Lore Record"}</p>
-            <h2>${card.dataset.title || "Lore Record"}</h2>
-            <p class="lead">${card.dataset.body || "This lore entry will open into a deeper article when the archive is connected."}</p>
-            <p>This preview behaves like the image archive: readers can move through records with previous and next while deeper blog pages are prepared.</p>
-            <div class="lore-modal-controls">
-              <button class="btn ghost" type="button" data-lore-prev>Previous</button>
-              <button class="btn ghost" type="button" data-lore-next>Next</button>
-            </div>
+            <p class="eyebrow">${entry.category || "Lore Record"}</p>
+            <h2>${entry.title || "Lore Record"}</h2>
+            <div class="lore-article-body">${body}</div>
+            ${hasRelatedPosts ? `
+              <div class="lore-modal-controls">
+                <button class="btn ghost" type="button" data-lore-prev>Previous Post</button>
+                <button class="btn ghost" type="button" data-lore-next>Next Post</button>
+              </div>
+            ` : ""}
           </div>
         </div>
       </div>
     `;
     modal.querySelector("[data-lore-close]").addEventListener("click", close);
-    modal.querySelector("[data-lore-prev]").addEventListener("click", () => {
-      activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+    modal.querySelector("[data-lore-prev]")?.addEventListener("click", () => {
+      activeIndex = (activeIndex - 1 + activeEntries.length) % activeEntries.length;
       render();
     });
-    modal.querySelector("[data-lore-next]").addEventListener("click", () => {
-      activeIndex = (activeIndex + 1) % cards.length;
+    modal.querySelector("[data-lore-next]")?.addEventListener("click", () => {
+      activeIndex = (activeIndex + 1) % activeEntries.length;
       render();
     });
   };
 
-  cards.forEach((card, index) => {
+  cards.forEach((card) => {
     card.addEventListener("click", () => {
-      activeIndex = index;
+      if (card.dataset.loreGroup) {
+        activeEntries = entriesFromGroup(card.dataset.loreGroup);
+      } else if (card.dataset.loreKey) {
+        const relatedGroup = groupForKey(card.dataset.loreKey);
+        activeEntries = relatedGroup
+          ? relatedGroup.map((key) => lorePostMeta[key]).filter(Boolean)
+          : [lorePostMeta[card.dataset.loreKey] || entryFromCard(card)];
+        activeIndex = Math.max(0, activeEntries.findIndex((entry) => entry.key === card.dataset.loreKey));
+      } else {
+        activeEntries = [entryFromCard(card)];
+      }
+      if (!activeEntries.length) activeEntries = [entryFromCard(card)];
+      if (!card.dataset.loreKey) activeIndex = 0;
       render();
       modal.classList.add("show");
       modal.querySelector("[data-lore-close]")?.focus();
@@ -1281,16 +1746,18 @@ function runSiteFeatures() {
   if (window.__annuschaSiteFeaturesStarted) return;
   window.__annuschaSiteFeaturesStarted = true;
   enhanceNavMenus();
+  mobileNavigation();
   polishGlobalChrome();
-  readerSessionControls();
+  ensureSatchelChrome();
+  showPendingSatchelToast();
   ambientLayer();
   cursorTrail();
   activeNav();
   contactTabs();
   bookCarousel();
-  orderForm();
   formspreeForms();
-  accountForm();
+  satchelActions();
+  renderSatchelPage();
   galleryChronicles();
   loreArchive();
   spoilerSafeCharacters();
