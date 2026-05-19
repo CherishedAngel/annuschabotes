@@ -14,9 +14,10 @@
   <meta name="twitter:title" content="Sign In | Annuscha Botes">
   <meta name="twitter:description" content="Enter the dark fantasy romance worlds of Annuscha Botes: Elysium, Xyphara, and What Remains of Me.">
   <meta name="twitter:image" content="https://annuschabotes.netlify.app/assets/Background/original%20transformed%20angel.webp">
-  <meta name="keywords" content="reader login, Annuscha Botes account, Google sign in, Facebook sign in, create reader account, My Chronicle, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
+  <meta name="keywords" content="reader login, Auth0 login, Annuscha Botes account, create reader account, My Chronicle, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
   <title>Sign In | Annuscha Botes</title>
+  <link rel="icon" type="image/png" href="assets/ideas/favicon.png">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.4/auth0-spa-js.production.js" defer></script>
 </head>
@@ -25,42 +26,26 @@
 <header class="site-header"><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="books.html">Books</a><a href="author.html">Author</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a><a href="gallery.html">Gallery</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav><div class="header-actions"></div></header>
 <main id="main-content" class="main">
   <section class="section wrap auth-section">
-    <p class="eyebrow">Sign in / Join the Chronicle</p>
-    <h2>Speak the oath.</h2>
+    <p class="eyebrow">The Chronicle Awaits</p>
+    <h2>Cross the veil.</h2>
     <div class="columns-2 auth-grid">
       <article class="panel panel-pad auth-panel">
-        <p class="eyebrow">Reader Gate</p>
-        <h3>Sign In</h3>
-        <div class="social-auth-stack">
-          <button class="btn ghost provider-auth-btn google-auth-btn" id="googleLoginBtn" type="button" aria-label="Sign in with Google"><span class="google-auth-mark" aria-hidden="true">G</span> Sign in with Google</button>
-          <div class="auth-divider">or</div>
-          <button class="btn ghost provider-auth-btn facebook-auth-btn" id="facebookLoginBtn" type="button" aria-label="Sign in with Facebook"><span class="fe--facebook" aria-hidden="true"></span> Sign in with Facebook</button>
-        </div>
-        
+        <p class="eyebrow">Returning Reader</p>
+        <h3>Enter the Chronicle</h3>
+        <p>Return to your private archive, continue your journey through the realms,
+      and reopen the stories already bound to your name.</p>
         <div class="divider"></div>
-        <form data-reader-login>
-          <label>Name or email<input name="username" type="text" autocomplete="username"></label>
-          <label>Password<input name="password" type="password" autocomplete="current-password"></label>
-          <label class="form-check"><input name="remember_login" type="checkbox"> Remember me</label>
-          <a class="tiny-link" href="mailto:hello@annuschabotes.com?subject=Password%20reset%20request">Forgot password?</a>
-          <p class="tag">Sign-in opens Auth0's secure reader gate. This page does not store passwords.</p>
-          <p class="tag" data-auth-status aria-live="polite"></p>
-          <button class="btn primary" id="loginBtn" type="submit">Sign In</button>
-        </form>
+        <p class="tag" data-auth-status aria-live="polite">Sign in to return to your reader account and continue beyond the veil.</p>
+        <button class="btn primary provider-auth-btn" id="loginBtn" type="button">Enter the Archive</button>
       </article>
       <article id="join" class="panel panel-pad auth-panel reader-library-panel">
-        <p class="eyebrow">Reader Library</p>
-        <h3>Create your reader account</h3>
-          <form class="account-create-form">
-          <label>Name<input name="account_name" autocomplete="name" required></label>
-          <label>Email<input name="account_email" type="email" autocomplete="email" required></label>
-          <label>Password<input name="account_password" type="password" autocomplete="new-password" required></label>
-          <label>Confirm password<input name="account_password_confirm" type="password" autocomplete="new-password" required></label>
-          <label>Optional contact number<input name="account_phone" type="tel" autocomplete="tel"></label>
-          <label class="form-check"><input name="remember_account" type="checkbox"> Remember me</label>
-          <label class="form-check"><input name="accept_terms" type="checkbox" data-accept-terms> I accept the Terms of Use & Sale</label>
-          <button class="btn primary" id="createAccountBtn" type="button" data-create-account disabled>Create New Account</button>
-        </form>
+        <p class="eyebrow">New Wanderer</p>
+        <h3>Join the Chronicle</h3>
+        <p>Create your reader account to unlock your satchel, access purchased books,
+      follow future releases, and step deeper into the worlds beyond the veil.</p>
+        <div class="divider"></div>
+        <p class="tag">Your account is secured through protected external authentication.</p>
+        <button class="btn primary provider-auth-btn" id="createAccountBtn" type="button">Begin Your Journey</button>
       </article>
     </div>
   </section>
