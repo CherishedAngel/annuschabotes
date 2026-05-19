@@ -153,7 +153,7 @@ async function initAnnuschaAuth0() {
     }
   } catch (error) {
     console.error("Auth0 authentication failed.", error);
-    setAuthStatus("The reader gate could not open. Please try again.");
+    setAuthStatus("Sign-in could not be completed. Please try again.");
     if (document.body.matches("[data-auth-required='reader']")) {
       const currentPage = window.location.pathname.split("/").pop() || "user.html";
       window.location.replace(`login.html?next=${encodeURIComponent(currentPage)}`);
