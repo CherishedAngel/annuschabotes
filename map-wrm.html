@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive lore map for What Remains of Me by Annuscha Botes. Explore Company sectors, Echo danger zones, and dystopian city records.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Annuscha Botes">
+  <meta property="og:title" content="Interactive Map: What Remains of Me | Annuscha Botes">
+  <meta property="og:description" content="Explore the restricted city map, Company facility, and Echo danger zones from What Remains of Me.">
+  <meta property="og:url" content="https://annuschabotes.netlify.app/map-wrm.html">
+  <meta property="og:image" content="https://annuschabotes.netlify.app/assets/blog%20lore/what%20remains%20of%20me/dystopian%20city%20of%20remains%20of%20me.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="What Remains of Me map, interactive fantasy map, Echo facility, Annuscha Botes, dystopian fantasy map, dark fantasy romance lore">
+  <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
+  <title>Interactive Map: What Remains of Me | Annuscha Botes</title>
+  <link rel="icon" type="image/png" href="assets/ideas/favicon.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body class="map-page">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="books.html">Books</a><a href="author.html">Author</a><a href="characters.html">Characters</a><a href="lore.html">Lore</a><a href="gallery.html">Gallery</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav><div class="header-actions"><a class="tiny-link" href="login.html">Sign in</a></div></header>
+<main id="main-content" class="main map-main">
+  <section class="section wrap map-intro">
+    <p class="eyebrow">Restricted Company Archive</p>
+    <h1>What Remains of Me: Interactive Map</h1>
+    <p class="lead">Pan, zoom, and open the marked records across the fallen city. Each point is a lore hook for future Company files, Echo incidents, and restricted memories.</p>
+    <div class="button-row">
+      <a class="btn ghost" href="lore.html#worlds-system">Return to Lore</a>
+      <a class="btn ghost" href="books.html">Browse Books</a>
+    </div>
+  </section>
+  <section class="map-shell wrap" aria-label="Interactive map of What Remains of Me">
+    <div id="map"></div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Some cities survive only as scars on the map.</p></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="characters.html">Characters</a><a href="gallery.html">Gallery</a></div><div><p class="footer-title">Reader</p><a href="login.html">My Chronicle</a><a href="contact.html">Contact</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a><a href="content-disclaimer.html">Content Disclaimer</a></div></div></footer>
+<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.L) return;
+
+    const map = L.map("map", {
+      crs: L.CRS.Simple,
+      minZoom: -1.4,
+      maxZoom: 1.6,
+      zoomControl: true
+    });
+
+    const bounds = [[0, 0], [1000, 1000]];
+    L.imageOverlay("assets/blog lore/what remains of me/dystopian city of remains of me.png", bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    const markerIcon = L.divIcon({
+      className: "lore-map-marker",
+      html: "<span></span>",
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
+      popupAnchor: [0, -18]
+    });
+
+    const records = [
+      {
+        point: [525, 325],
+        title: "The Company Facility",
+        text: "Main Echo experimentation center. Threat Level: EXTREME."
+      },
+      {
+        point: [650, 625],
+        title: "Outer Ruins",
+        text: "Collapsed residential sectors where old city records still surface after storms."
+      },
+      {
+        point: [365, 690],
+        title: "Echo Quarantine Sector",
+        text: "Restricted containment blocks used after failed awakening procedures."
+      },
+      {
+        point: [245, 445],
+        title: "Transit Line Seven",
+        text: "A sealed route used for moving candidates between training wings."
+      }
+    ];
+
+    records.forEach((record) => {
+      L.marker(record.point, { icon: markerIcon }).addTo(map).bindPopup(`
+        <h3>${record.title}</h3>
+        <p>${record.text}</p>
+      `);
+    });
+  });
+</script>
+</body>
+</html>
