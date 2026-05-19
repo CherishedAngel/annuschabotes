@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="website">
@@ -16,7 +17,8 @@
   <meta name="twitter:image" content="https://annuschabotes.netlify.app/assets/Background/original%20transformed%20angel.webp">
   <meta name="keywords" content="satchel, book cart, fantasy book purchase, digital book order, Annuscha Botes books, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
-  <title>Satchel | Annuscha Botes</title>
+  <title>Your Satchel | Annuscha Botes</title>
+  <link rel="icon" type="image/png" href="assets/ideas/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="cart-page">
@@ -36,52 +38,32 @@
   <div class="header-actions"><a class="tiny-link" href="login.html">Sign in</a></div>
 </header>
 <main id="main-content" class="main">
-  <section class="section wrap">
+  <section class="section wrap" data-satchel-page>
     <p class="eyebrow">Your Satchel</p>
-    <h1>Satchel</h1>
-    <p class="lead">Preview state: this shows how the page will feel once a reader has stories waiting for checkout or download.</p>
+    <h1>Your Satchel</h1>
+    <p class="lead">Gather your chosen relics.</p>
+    <p class="secure-note">This website does not collect or store card details. Checkout and digital delivery are handled securely through Payhip.</p>
 
     <div class="satchel-layout">
-      <div class="satchel-list" aria-label="Satchel items">
-        <article class="satchel-item">
-          <img src="assets/Elysium pics/e-book cover Eclipse of Elysium 1 final.webp" alt="Eclipse of Elysium cover" loading="lazy" decoding="async">
-          <div>
-            <p class="eyebrow">Digital PDF</p>
-            <h3>Eclipse of Elysium</h3>
-            <p>Book I of Cycles of Shadow & Light. Sample opened, full PDF waiting for secure checkout.</p>
-            <div class="format-row"><span class="tag">PDF</span><span class="tag-disabled">Audio unavailable</span></div>
-          </div>
-          <div class="satchel-price">
-            <strong>R45.00</strong>
-            <a class="btn ghost" href="order.html?book=elysium&format=pdf">Order</a>
-          </div>
+      <div>
+        <article class="panel panel-pad satchel-empty" data-satchel-empty>
+          <h3>Your satchel is empty.</h3>
+          <p data-satchel-empty-message></p>
+          <a class="btn primary" href="books.html">Return to the Library Beyond the Veil</a>
         </article>
-
-        <article class="satchel-item">
-          <img src="assets/What remains of me pics/What remains of me full cover.webp" alt="What Remains of Me cover" loading="lazy" decoding="async">
-          <div>
-            <p class="eyebrow">Digital PDF</p>
-            <h3>What Remains of Me</h3>
-            <p>Dystopian romance with radiant blue Echo power. This row previews another paid item state.</p>
-            <div class="format-row"><span class="tag">PDF</span><span class="tag-disabled">Audio unavailable</span></div>
-          </div>
-          <div class="satchel-price">
-            <strong>R45.00</strong>
-            <a class="btn ghost" href="order.html?book=remains&format=pdf">Order</a>
-          </div>
-        </article>
+        <div class="satchel-list" data-satchel-list aria-label="Satchel items"></div>
       </div>
 
       <aside class="panel panel-pad satchel-summary">
         <p class="eyebrow">Satchel Summary</p>
-        <h3>2 stories chosen</h3>
+        <h3 data-satchel-summary-count>0 stories chosen</h3>
         <dl>
-          <div><dt>Digital books</dt><dd>R90.00</dd></div>
-          <div><dt>Audio</dt><dd>Unavailable</dd></div>
+          <div><dt>Format</dt><dd>Digital PDF</dd></div>
           <div><dt>Checkout</dt><dd>Payhip</dd></div>
+          <div><dt>Delivery</dt><dd>Email from Payhip</dd></div>
         </dl>
-        <p>Payments are completed through secure external checkout. This website does not collect card details.</p>
-        <div class="button-row"><a class="btn primary" href="order.html">Order Copy</a><a class="btn ghost" href="books.html">Keep Browsing</a></div>
+        <p>This website does not collect or store card details. Checkout and digital delivery are handled securely through Payhip.</p>
+        <div class="button-row"><a class="btn primary" href="books.html">Continue Shopping</a><button class="btn ghost" type="button" data-clear-satchel hidden>Clear Satchel</button></div>
       </aside>
     </div>
   </section>
