@@ -18,6 +18,7 @@
   <meta name="keywords" content="Lore and Chronicles, fantasy worldbuilding blog, magic systems, deleted scenes, maps, provinces, forbidden records, Annuscha Botes lore, Annuscha Botes, CherishedAngel, dark fantasy romance, gothic fantasy romance, fantasy romance books, mature fantasy fiction, South African fantasy author, iridescent fantasy website">
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
   <title>Lore & Chronicles | Annuscha Botes</title>
+  <link rel="icon" type="image/png" href="assets/ideas/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="lore-page">
@@ -43,59 +44,64 @@
 
   <section class="section slim wrap">
     <div class="latest-lore-grid" aria-label="Latest lore posts">
-      <button class="lore-panel lore-panel-large" type="button" data-lore-card data-category="World Lore" data-title="The Twin Suns of Elysium" data-image="assets/Elysium pics/scenery/Elysium.webp" data-body="Why does Elysium's sky hold two suns, and why did one of them learn to grieve? This space will hold maps, geography notes, celestial rules, and worldbuilding updates as new lore is written.">
-        <img src="assets/Elysium pics/scenery/Elysium.webp" alt="Elysium landscape" loading="lazy" decoding="async">
-        <span class="content"><span class="eyebrow">Newest / World Lore</span><strong>The Twin Suns of Elysium</strong><small>Maps, geography, celestial rules, and worldbuilding notes.</small><span class="gallery-link">Open Record</span></span>
-      </button>
-      <button class="lore-panel" type="button" data-lore-card data-category="Magic Systems" data-title="Blue Light, Shadow, and Echo" data-image="assets/Elysium pics/magic/yin yang background.webp" data-body="A future article space for magical laws, limits, costs, and the rules that make power dangerous. Use this for Elysium light magic, Xyphara bioluminescence, and What Remains of Me Echo awakenings.">
-        <img src="assets/Elysium pics/magic/yin yang background.webp" alt="Yin yang magic background" loading="lazy" decoding="async">
-        <span class="content"><span class="eyebrow">Magic Systems</span><strong>Blue Light, Shadow, and Echo</strong><small>Rules, limits, costs, and dangerous awakenings.</small><span class="gallery-link">Open Record</span></span>
-      </button>
-      <button class="lore-panel" type="button" data-lore-card data-category="Behind the Book" data-title="Cover Art & AI Art Process" data-image="assets/Background/lore back.webp" data-body="A transparent behind-the-scenes archive for cover concepts, AI-assisted visual development, commissions, inspiration boards, and final-credit notes.">
+      <button class="lore-panel lore-panel-large" type="button" data-lore-card data-lore-key="dangerousEchoes" data-category="Magic Systems" data-title="Top 7 Most Dangerous Echo Powers" data-image="assets/Background/lore back.webp" data-body="A Company threat-classification record for shapeshifting, mind manipulation, shadowform, flame, devotion, kinetic rupture, and fear Echoes.">
         <img src="assets/Background/lore back.webp" alt="Lore archive background" loading="lazy" decoding="async">
-        <span class="content"><span class="eyebrow">Behind the Book</span><strong>Cover Art & AI Art Process</strong><small>Process notes, concept art, and visual credits.</small><span class="gallery-link">Open Record</span></span>
+        <span class="content"><span class="eyebrow">Latest / Magic Systems</span><strong>Top 7 Most Dangerous Echo Powers</strong><small>Threat levels, side effects, and Company classifications.</small><span class="gallery-link">Open Record</span></span>
       </button>
-      <button class="lore-panel forbidden-record" type="button" data-lore-card data-category="Forbidden Records" data-title="Forbidden Records" data-image="assets/Background/black_and_white_eclipse_background.webp" data-body="Reserved for deleted scenes, spoiler-safe teasers, ancient prophecies, secret notes, and timeline clues. This record should feel dangerous, but still reader-safe until opened intentionally.">
+      <button id="forbidden-records" class="lore-panel forbidden-record" type="button" data-lore-card data-lore-key="emptyCoffin" data-category="Forbidden Records" data-title="Forbidden Record 07: The Empty Coffin" data-image="assets/Background/black_and_white_eclipse_background.webp" data-body="A restricted psychological fragment recovered from Company archives. Contains emotional distress triggers, failed awakening procedures, and classified experimentation logs.">
         <img src="assets/Background/black_and_white_eclipse_background.webp" alt="Dark eclipse record" loading="lazy" decoding="async">
-        <span class="content"><span class="eyebrow">Forbidden Records</span><strong>Deleted scenes, prophecies, secret notes.</strong><small>Spoiler-safe teasers and timeline clues.</small><span class="gallery-link">Open Record</span></span>
+        <span class="content"><span class="eyebrow">Forbidden Records</span><strong>Forbidden Record 07: The Empty Coffin</strong><small>Restricted psychological fragments from Company archives.</small><span class="gallery-link">Open Record</span></span>
+      </button>
+      <button class="lore-panel" type="button" data-lore-card data-lore-key="shadowWar" data-category="World Lore" data-title="The Shadow War: How Elysium Lost Its Balance" data-image="assets/Elysium pics/scenery/Elysium.webp" data-body="Archived within the forbidden records of the Living Chronicle. The history of the Circle of Twilight, Lyralei Nightfall, the Ebonlight, the Great Sundering, and the false Golden Age.">
+        <img src="assets/Elysium pics/scenery/Elysium.webp" alt="Elysium landscape" loading="lazy" decoding="async">
+        <span class="content"><span class="eyebrow">World Lore</span><strong>The Shadow War: How Elysium Lost Its Balance</strong><small>The Circle of Twilight, the Ebonlight, and the birth of the Golden Order.</small><span class="gallery-link">Open Record</span></span>
       </button>
     </div>
   </section>
 <div class="divider"></div>
-  <section class="section wrap">
+  <section id="worlds-system" class="section wrap">
     <p class="eyebrow">Worlds System</p>
     <h2>Maps, magic, provinces, and lands</h2>
     <div class="world-grid lore-system-grid">
-      <button class="world-card lore-rune-card" type="button" data-lore-card data-category="Maps & Geography" data-title="Maps of the Realms" data-image="assets/Elysium pics/scenery/Elysium landscape.webp" data-body="A future home for realm maps, travel routes, ruins, kingdoms, forests, waterfalls, citadels, and regional notes.">
+      <button class="world-card lore-rune-card" type="button" data-lore-card data-lore-group="maps" data-category="Maps & Geography" data-title="Maps of the Realms" data-image="assets/blog lore/what remains of me/dystopian city of remains of me.png" data-body="Maps, geography, travel warnings, creature zones, and interactive map records.">
         <p class="eyebrow">Geography</p>
         <h3>Maps of the Realms</h3>
-        <p>Travel routes, kingdom borders, ruins, and hidden places.</p>
+        <p>Travel routes, fallen territories, dystopian city records, and creature zones.</p>
       </button>
-      <button class="world-card lore-rune-card" type="button" data-lore-card data-category="Magic Systems" data-title="Laws of Magic" data-image="assets/Elysium pics/scenery/magical place in Elysium.webp" data-body="A living grid for light magic, shadow corruption, Xyphara bioluminescence, Echo awakenings, costs, limits, and consequences.">
+      <button class="world-card lore-rune-card" type="button" data-lore-card data-lore-group="magic" data-category="Magic Systems" data-title="Laws of Magic" data-image="assets/Elysium pics/scenery/magical place in Elysium.webp" data-body="Magic-system posts, Echo records, shadow theory, and power limits.">
         <p class="eyebrow">Magical Systems</p>
         <h3>Laws of Magic</h3>
-        <p>Power, price, limits, and the rules characters break.</p>
+        <p>Echo awakenings, dangerous powers, blue light, shadow, and the price of magic.</p>
       </button>
-      <button class="world-card lore-rune-card" type="button" data-lore-card data-category="Provinces / Lands" data-title="Lands & Bloodlines" data-image="assets/Planet of Xyphara/scenery/Castle in planet Xyphara.webp" data-body="A future archive for provinces, bloodlines, courts, lands, villages, and political tensions between realms.">
+      <button class="world-card lore-rune-card" type="button" data-lore-card data-lore-group="lands" data-category="Lands & Bloodlines" data-title="Lands & Bloodlines" data-image="assets/Elysium pics/characters/Cain/Beastman Cain.webp" data-body="Bloodlines, exiles, provinces, and political records.">
         <p class="eyebrow">Provinces / Lands</p>
         <h3>Lands & Bloodlines</h3>
-        <p>Courts, villages, borders, and sealed territories.</p>
+        <p>Beastmen exile records, bloodline histories, provinces, and sealed territories.</p>
       </button>
     </div>
   </section>
 <div class="divider"></div>
-  <section class="section wrap">
+  <section id="archive" class="section wrap">
     <p class="eyebrow">Past Records</p>
-    <h2>Archive of future posts</h2>
+    <h2>Older-post archive</h2>
     <div class="lore-archive-grid">
-      <button class="lore-archive-card" type="button" data-lore-card data-category="Character Secrets" data-title="What Cain Remembers About the Sun" data-image="assets/Elysium pics/characters/Cain/Beastman Cain.webp" data-body="A character secret record for future lore drops, deleted fragments, and spoiler-safe notes.">
-        <span>Character Secrets</span><strong>What Cain Remembers About the Sun</strong>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="cainMonster" data-category="Character Secrets" data-title="The Night Cain Became a Monster" data-image="assets/Elysium pics/characters/Cain/Beastman Cain.webp" data-body="There are stories the Golden Order burned from history. This is one of them.">
+        <span>Character Secrets</span><strong>The Night Cain Became a Monster</strong>
       </button>
-      <button class="lore-archive-card" type="button" data-lore-card data-category="Deleted Scenes" data-title="First Line of Radiance of Elysium" data-image="assets/ideas/Chapter 1 Eclipse.webp" data-body="A story teaser slot for deleted scenes, first lines, and preview fragments.">
-        <span>Deleted Scenes</span><strong>First Line of Radiance of Elysium</strong>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="elysiumFirstLines" data-category="Deleted Scenes" data-title="First Lines of Shadows of Elysium" data-image="assets/ideas/Chapter 1 Eclipse.webp" data-body="Original opening chapter fragment from a darker early version of Elysia's awakening.">
+        <span>Deleted Scenes</span><strong>First Lines of Shadows of Elysium</strong>
       </button>
-      <button class="lore-archive-card" type="button" data-lore-card data-category="Writing Updates" data-title="From the Author's Desk" data-image="assets/Background/Tavern in forest Elysium.webp" data-body="Updates about drafting, launch preparation, editing, release timing, and reader announcements.">
-        <span>Writing Updates</span><strong>From the Author's Desk</strong>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="xypharaInspired" data-category="From the Author's Desk" data-title="What Inspired Planet of Xyphara" data-image="assets/Planet of Xyphara/scenery/planet Xyphara landscape.webp" data-body="Planet of Xyphara was the first fantasy world Annuscha Botes created as a teenager.">
+        <span>From the Author's Desk</span><strong>What Inspired Planet of Xyphara</strong>
+      </button>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="worldsOfAnnuscha" data-category="Behind the Book" data-title="The Worlds of Annuscha Botes" data-image="assets/Background/lore back.webp" data-body="Every fantasy world begins somewhere: a forgotten dream, a nightmare, or a question that refuses to leave.">
+        <span>Behind the Book</span><strong>The Worlds of Annuscha Botes</strong>
+      </button>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="buildingXyphara" data-category="Worldbuilding" data-title="Building Xyphara From Scratch" data-image="assets/Planet of Xyphara/scenery/hometown forest on planet Xyphara.webp" data-body="Every fantasy world starts with fragments. For Xyphara, it began with butterflies, glowing forests, and grasshoppers.">
+        <span>Worldbuilding</span><strong>Building Xyphara From Scratch</strong>
+      </button>
+      <button class="lore-archive-card" type="button" data-lore-card data-lore-key="elysiaDesign" data-category="Cover Art & AI Art Process" data-title="How I Designed Elysia Nightshade" data-image="assets/Elysium pics/Elysia with her magic.jpg" data-body="A behind-the-scenes look at how Elysia evolved from a soft butterfly-inspired concept into the haunted Shadowmancer.">
+        <span>Cover Art & AI Art Process</span><strong>How I Designed Elysia Nightshade</strong>
       </button>
     </div>
   </section>
