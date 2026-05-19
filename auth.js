@@ -2,21 +2,25 @@
   Auth0 setup for the static Netlify site.
 
   Auth0 Application settings should include:
-  - Allowed Callback URLs: https://annuschabotes.netlify.app/login.html
+  - Allowed Callback URLs: https://annuschabotes.netlify.app/user.html
   - Allowed Logout URLs: https://annuschabotes.netlify.app/login.html
   - Allowed Web Origins: https://annuschabotes.netlify.app
 
   The domain and clientId below are public SPA identifiers, not secret keys.
   Do not place API secrets, client secrets, or database credentials in frontend code.
-  This uses Auth0's token cache for a multi-page static site; it does not store passwords.
+  Auth0 Universal Login creates and signs in accounts securely; this site does not
+  create accounts manually and never stores passwords.
 */
+const annuschaAuthReturnUrl = "https://annuschabotes.netlify.app/user.html";
+const annuschaAuthLoginUrl = "https://annuschabotes.netlify.app/login.html";
+
 const annuschaAuth0Config = {
   domain: "dev-epxoqx07iasvp8mm.au.auth0.com",
   clientId: "oxWbtB1ZM7YKtfoAFq1IaPm5eTNGtFsd",
-  cacheLocation: "localstorage",
-  useRefreshTokens: true,
+  cacheLocation: "memory",
+  useRefreshTokens: false,
   authorizationParams: {
-    redirect_uri: `${window.location.origin}/login.html`
+    redirect_uri: annuschaAuthReturnUrl
   }
 };
 
@@ -53,8 +57,11 @@ function updateAuthProfile(user) {
 async function loginWithAuth0(options = {}) {
   if (!annuschaAuth0Client) return;
   await annuschaAuth0Client.loginWithRedirect({
-    appState: { targetUrl: authTargetUrl() },
-    authorizationParams: options.authorizationParams || {}
+    appState: { targetUrl: "user.html" },
+    authorizationParams: {
+      redirect_uri: annuschaAuthReturnUrl,
+      ...(options.authorizationParams || {})
+    }
   });
 }
 
@@ -70,7 +77,7 @@ async function logoutWithAuth0() {
   if (!annuschaAuth0Client) return;
   await annuschaAuth0Client.logout({
     logoutParams: {
-      returnTo: `${window.location.origin}/login.html`
+      returnTo: annuschaAuthLoginUrl
     }
   });
 }
@@ -78,8 +85,6 @@ async function logoutWithAuth0() {
 function wireAuthButtons() {
   const loginForm = document.querySelector("[data-reader-login]");
   const loginBtn = document.getElementById("loginBtn");
-  const googleBtn = document.getElementById("googleLoginBtn");
-  const facebookBtn = document.getElementById("facebookLoginBtn");
   const createBtn = document.getElementById("createAccountBtn");
   const logoutBtn = document.getElementById("logoutBtn");
 
@@ -91,18 +96,6 @@ function wireAuthButtons() {
   }
 
   if (loginBtn && !loginForm) loginBtn.addEventListener("click", () => loginWithAuth0());
-
-  if (googleBtn) {
-    googleBtn.addEventListener("click", () => {
-      loginWithAuth0({ authorizationParams: { connection: "google-oauth2" } });
-    });
-  }
-
-  if (facebookBtn) {
-    facebookBtn.addEventListener("click", () => {
-      loginWithAuth0({ authorizationParams: { connection: "facebook" } });
-    });
-  }
 
   if (createBtn) createBtn.addEventListener("click", signupWithAuth0);
   if (logoutBtn) logoutBtn.addEventListener("click", logoutWithAuth0);
@@ -130,8 +123,10 @@ async function initAnnuschaAuth0() {
       const result = await annuschaAuth0Client.handleRedirectCallback();
       const targetUrl = result?.appState?.targetUrl || "user.html";
       window.history.replaceState({}, document.title, window.location.pathname);
-      window.location.replace(targetUrl);
-      return;
+      if (!window.location.pathname.endsWith(targetUrl)) {
+        window.location.replace(targetUrl);
+        return;
+      }
     }
 
     const isAuthenticated = await annuschaAuth0Client.isAuthenticated();
