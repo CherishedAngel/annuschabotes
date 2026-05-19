@@ -18,6 +18,7 @@
   <script>try{if(localStorage.getItem("annuscha-age-verified")!=="true")document.documentElement.classList.add("age-pending");}catch(error){document.documentElement.classList.add("age-pending");}</script>
   <script>document.documentElement.classList.add("auth-pending");</script>
   <title>My Chronicle | Annuscha Botes</title>
+  <link rel="icon" type="image/png" href="assets/ideas/favicon.png">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.4/auth0-spa-js.production.js" defer></script>
 </head>
@@ -46,7 +47,7 @@
   <section class="section wrap reader-hero">
     <p class="eyebrow">Signed-in Reader Archive</p>
     <h1>My Chronicle</h1>
-    <p class="lead">Your private reader chamber for profile details, purchased books, secure delivery notes, and future fan creations.</p>
+    <p class="lead">Your private reader hub for account access, book delivery help, and future reader features.</p>
 
     <div class="reader-dashboard inventory-dashboard" aria-label="Reader dashboard">
       <aside class="reader-left-column">
@@ -58,32 +59,18 @@
           <p class="eyebrow">Reader Profile</p>
           <h3 id="readerDisplayName">Reader</h3>
           <p class="profile-email" id="readerEmail">Signed in with Auth0</p>
-          <div class="profile-actions" aria-label="Profile actions">
-            <input name="avatar" type="file" id="avatarUpload" accept="image/*" hidden>
-            <button class="btn ghost" id="changeAvatarBtn" type="button">Change Avatar</button>
-          </div>
         </article>
 
         <article class="reader-status-card reader-details-card">
           <p class="eyebrow">Reader Details</p>
           <div class="settings-list compact-settings">
             <p><strong>Name</strong><span data-auth-name>Reader</span></p>
-            <p><strong>Email</strong><span data-auth-email>Signed in with Auth0</span></p>
-            <p><strong>Contact</strong><span>+27 12 345 6789</span></p>
+            <p><strong>Email</strong><span data-auth-email>Signed in securely</span></p>
           </div>
-          <label class="mini-field" for="favorite-book">Favourite Book</label>
-          <select id="favorite-book" name="favorite_book" class="reader-select">
-            <option>Eclipse of Elysium</option>
-            <option>Planet of Xyphara</option>
-            <option>What Remains of Me</option>
-          </select>
-          <label class="reader-checkbox"><input name="newsletter_updates" type="checkbox" checked> Monthly newsletter updates</label>
-          <div class="profile-actions" aria-label="Account actions">
-            <a class="btn ghost" href="login.html#join">Edit Details</a>
-            <button class="btn ghost account-delete-btn" type="button" aria-describedby="deleteTip">Account Deletion Request</button>
-            <span class="delete-tooltip" id="deleteTip" role="tooltip">This will request manual account deletion until secure backend account management is connected.</span>
+          <div class="profile-actions" aria-label="Reader account actions">
+            <a class="btn ghost" href="contact.html?topic=account-help">Account Help</a>
+            <button class="btn sign-out-btn" id="logoutBtn" type="button" data-sign-out>Sign Out</button>
           </div>
-          <button class="btn sign-out-btn" id="logoutBtn" type="button" data-sign-out>Sign Out</button>
         </article>
 
       </aside>
@@ -92,34 +79,17 @@
         <article class="inventory-panel">
           <div class="panel-heading-row">
             <div>
-              <p class="eyebrow">Your Satchel / Purchase History</p>
-              <h2>Purchased Books</h2>
+              <p class="eyebrow">Your Satchel</p>
+              <h2>Book Delivery</h2>
             </div>
             <a class="tiny-link" href="contact.html?topic=missing-download">Need help?</a>
           </div>
-          <div class="inventory-list" aria-label="Purchase history">
-            <section class="inventory-item">
-              <img src="assets/Elysium pics/e-book cover Eclipse of Elysium 1 final.webp" alt="Eclipse of Elysium book cover" loading="lazy" decoding="async">
-              <div class="inventory-copy">
-                <p class="eyebrow">PDF / Purchased 2026-05-14</p>
-                <h3>Eclipse of Elysium</h3>
-                <p>Secure download delivery should be generated after Payhip, PayPal, or backend confirmation.</p>
-              </div>
-              <a class="btn disabled" aria-disabled="true" tabindex="-1">Download Pending</a>
-            </section>
-            <section class="inventory-item">
-              <img src="assets/What remains of me pics/E book cover What remains of me (1).webp" alt="What Remains of Me book cover" loading="lazy" decoding="async">
-              <div class="inventory-copy">
-                <p class="eyebrow">Audio / Wishlist</p>
-                <h3>What Remains of Me</h3>
-                <p>Audio delivery is a future product and will need secure fulfilment before launch.</p>
-              </div>
-              <a class="btn disabled" aria-disabled="true" tabindex="-1">Not Available Yet</a>
-            </section>
+          <p>Digital purchases are currently handled securely through Payhip. After checkout, Payhip sends the download link to the email address used during purchase.</p>
+          <p>If you lose your download email or have trouble accessing your book, contact me and include the email address used for checkout.</p>
+          <div class="account-action-grid">
+            <a class="btn primary" href="books.html">Browse Books</a>
+            <a class="btn ghost" href="contact.html?topic=missing-download">Help With Download</a>
           </div>
-          <em>
-            <p class="secure-note">No private book files are exposed on this page. Real download links need a backend, Payhip delivery, or manual email fulfilment after confirmed payment.</p>
-          </em>
         </article>
         <article class="portal-card">
           <p class="eyebrow">Locked Portal</p>
@@ -131,7 +101,7 @@
     </div>
   </section>
 </main>
-<footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Membership within the court of shadows has its advantages&hellip; if your soul survives the initiation.</p></div><div><p class="footer-title">Reader</p><a href="order.html">Order</a></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="lore.html">Lore</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a></div></div></footer>
+<footer class="footer"><div class="footer-inner"><div><a class="brand" href="index.html"><strong>Annuscha Botes</strong><span>Dark Fantasy Romance</span></a><p>Membership within the court of shadows has its advantages&hellip; if your soul survives the initiation.</p></div><div><p class="footer-title">Reader</p><a href="cart.html">Your Satchel</a></div><div><p class="footer-title">The Chronicle</p><a href="books.html">Books</a><a href="lore.html">Lore</a></div><div><p class="footer-title">Legal</p><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use & Sale</a></div></div></footer>
 <script src="auth.js" defer></script>
 <script src="script.js" defer></script>
 </body>
