@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://annuschabotes.netlify.app/sitemap.xml
