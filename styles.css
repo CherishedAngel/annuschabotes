@@ -5571,6 +5571,51 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .home-page .hero {
+    background-image: url("assets/Background/original transformed angel.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .hero-media video {
+    display: none;
+  }
+
+  .ambient .particle:nth-child(n+13),
+  .ambient .petal:nth-child(n+4),
+  .trail {
+    display: none;
+  }
+
+  .site-header,
+  .mobile-menu,
+  .panel,
+  .panel-pad,
+  .book-card,
+  .story-card,
+  .character-card,
+  .inventory-panel,
+  .portal-card,
+  .reader-status-card,
+  .btn,
+  button,
+  .cookie-consent,
+  .raven-panel {
+    backdrop-filter: blur(6px);
+  }
+
+  .metric,
+  .book-card,
+  .story-card,
+  .character-card,
+  .panel,
+  .inventory-panel,
+  .portal-card,
+  .reader-status-card {
+    box-shadow: 0 16px 42px rgba(0,0,0,.52), 0 0 18px rgba(86,231,255,.08);
+  }
+
   #map {
     min-height: 430px;
     height: 70vh;
@@ -5891,6 +5936,147 @@ ul {
   .carousel-controls .btn {
     width: 52px;
     flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 430px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .main {
+    padding-inline: 10px;
+  }
+
+  .section {
+    padding-block: 36px;
+  }
+
+  .panel,
+  .panel-pad,
+  .story-card,
+  .book-card,
+  .inventory-panel,
+  .portal-card,
+  .reader-status-card,
+  .contact-side,
+  .satchel-summary {
+    padding-inline: clamp(14px, 5vw, 20px);
+  }
+
+  .satchel-item {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .satchel-item img {
+    width: 84px;
+  }
+
+  .cookie-consent {
+    border-radius: 42px 42px 22px 22px;
+    padding-inline: 14px;
+  }
+
+  .raven-panel {
+    right: -2px;
+    width: calc(100vw - 16px);
+    padding: 14px;
+  }
+
+  .gallery-modal-card,
+  .lore-modal-card {
+    width: calc(100vw - 16px);
+    padding: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  h1 {
+    font-size: clamp(2.05rem, 16vw, 3.1rem);
+  }
+
+  h2 {
+    font-size: clamp(1.78rem, 13vw, 2.75rem);
+  }
+
+  .brand {
+    max-width: calc(100% - 58px);
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .age-box {
+    width: calc(100vw - 16px);
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .age-box h2 {
+    font-size: clamp(1rem, 8vw, 1.5rem);
+  }
+
+  .age-box input {
+    min-height: 34px;
+    font-size: .82rem;
+  }
+
+  .age-warning {
+    width: 32px;
+    height: 32px;
+  }
+
+  .gallery-viewer img {
+    min-height: 180px;
+  }
+
+  .gallery-viewer-controls {
+    top: auto;
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .main {
+    padding-inline: 8px;
+  }
+
+  .mobile-menu {
+    right: 8px;
+    width: calc(100vw - 16px);
+  }
+
+  .mobile-menu-toggle,
+  .raven-toggle {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .dob-grid {
+    gap: 5px;
+  }
+
+  .age-box label {
+    letter-spacing: .1em;
+  }
+
+  .satchel-item {
+    grid-template-columns: 1fr;
+  }
+
+  .satchel-item img {
+    width: min(150px, 54vw);
+  }
+
+  .raven-quick button {
+    flex-basis: 100%;
   }
 }
 
