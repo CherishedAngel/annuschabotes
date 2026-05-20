@@ -73,7 +73,7 @@ function ambientLayer() {
   layer.className = "ambient";
   document.body.prepend(layer);
 
-  const particleCount = window.matchMedia("(max-width: 700px)").matches ? 26 : 54;
+  const particleCount = window.matchMedia("(max-width: 768px)").matches ? 12 : 54;
   for (let i = 0; i < particleCount; i += 1) {
     const dot = document.createElement("i");
     dot.className = "particle";
@@ -86,7 +86,7 @@ function ambientLayer() {
     layer.appendChild(dot);
   }
 
-  const petalCount = window.matchMedia("(max-width: 700px)").matches ? 8 : 18;
+  const petalCount = window.matchMedia("(max-width: 768px)").matches ? 3 : 18;
   for (let i = 0; i < petalCount; i += 1) {
     const petal = document.createElement("i");
     petal.className = "petal";
@@ -101,6 +101,7 @@ function ambientLayer() {
 
 function cursorTrail() {
   if (reduceMotion.matches) return;
+  if (window.matchMedia("(max-width: 768px)").matches) return;
   let last = 0;
   window.addEventListener("pointermove", (event) => {
     const now = Date.now();
