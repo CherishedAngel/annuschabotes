@@ -6099,9 +6099,9 @@ ul {
   .button-row .payhip-buy-button,
   a.payhip-buy-button.btn,
   .btn.payhip-buy-button {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    flex: 1 1 5% !important;
+    width: 90% !important;
+    max-width: 91% !important;
     min-width: 0 !important;
     white-space: normal !important;
   }
@@ -6109,8 +6109,8 @@ ul {
   .gallery-viewer figcaption {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    align-items: center;
+    gap: 2px;
   }
 
   .gallery-viewer-controls {
