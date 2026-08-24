@@ -8,11 +8,12 @@ const satchelCatalog = {
     id: "elysium",
     title: "Eclipse of Elysium",
     format: "PDF",
-    price: "Payhip link coming soon",
+    price: "R90.00",
     cover: "assets/Elysium pics/e-book cover Eclipse of Elysium 1 final.webp",
     description: "Book I of Cycles of Shadow & Light. A dark fantasy romance of forbidden shadow magic, prophecy, and dangerous love.",
     sample: "assets/Elysium pics/Eclipse of Elysium Sample.pdf",
-    payhip: ""
+    payhip: "https://payhip.com/b/qLoMJ",
+    payhipProduct: "qLoMJ"
   },
   xyphara: {
     id: "xyphara",
@@ -28,7 +29,7 @@ const satchelCatalog = {
     id: "remains",
     title: "What Remains of Me",
     format: "PDF",
-    price: "R45.00",
+    price: "R90.00",
     cover: "assets/What remains of me pics/E book cover What remains of me (1).webp",
     description: "A dystopian dark romance where trauma awakens Echo powers and one girl refuses to become a weapon.",
     sample: "assets/What remains of me pics/sample of What remains of me.pdf",
